@@ -1,8 +1,9 @@
 import React from 'react'
+import { PagesTitle } from '../components'
 
 function NewContact() {
   return (
-    <div>New Contact</div>
+    <PagesTitle title={"Adicione um novo contato"} />
   )
 }
 

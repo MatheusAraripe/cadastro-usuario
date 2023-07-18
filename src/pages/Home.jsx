@@ -1,8 +1,9 @@
 import React from 'react'
+import { PagesTitle } from '../components'
 
 function Home() {
   return (
-    <h1>Home</h1>
+    <PagesTitle title={"Home"} />
   )
 }
 
