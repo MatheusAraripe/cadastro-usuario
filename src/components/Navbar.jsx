@@ -1,21 +1,30 @@
 import { Drawer,Box } from '@mui/material'
-import { red } from '@mui/material/colors'
 import React from 'react'
 
 function Navbar() {
   return (
-    <Drawer variant='permanent' >
+    <Drawer variant='permanent'>
       <Box
       m={2}
       display={'flex'}
-      justifyContent={'space-around'}
+      flexDirection={'column'}
+      justifyContent={'center'}
       alignItems={"center"}
       height={"100%"}
       width={"15vh"}
       >
-        <p>navBar</p>
+        <Box my={3}>
+          <p>Home</p>
+        </Box>
+        <Box my={3}>
+          <p>Contatos</p>
+        </Box>
+        <Box my={3}>
+          <p>Novo Contato</p>
+        </Box>
       </Box>
     </Drawer>
+
   )
 }
 
