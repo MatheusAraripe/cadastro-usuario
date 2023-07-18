@@ -1,0 +1,9 @@
+.navLink{
+    text-decoration: none;
+    color: rgba(105, 105, 105, 0.884);
+    padding: 1rem;
+    width: 100%;
+}
+.navLink:hover{
+   color: #32e479;
+}
