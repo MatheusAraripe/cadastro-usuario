@@ -1,18 +1,21 @@
-import { Tabs,Tab,Box } from '@mui/material'
+import { Drawer,Box } from '@mui/material'
+import { red } from '@mui/material/colors'
 import React from 'react'
 
 function Navbar() {
   return (
-    <Box sx={{height: "100vh", width: "20vh", backgroundColor: "red"}}>
-        <Tabs
-        orientation="vertical"
-        sx={{display: 'flex', backgroundColor: "blue", justifyContent: 'space-evenly', height: "100%"}}
-        >
-            <Tab label="Item One" />
-            <Tab label="Item Two" />
-            <Tab label="Item Three" />
-        </Tabs>
-    </Box>
+    <Drawer variant='permanent' >
+      <Box
+      m={2}
+      display={'flex'}
+      justifyContent={'space-around'}
+      alignItems={"center"}
+      height={"100%"}
+      width={"15vh"}
+      >
+        <p>navBar</p>
+      </Box>
+    </Drawer>
   )
 }
 
