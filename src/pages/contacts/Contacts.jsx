@@ -4,7 +4,7 @@ import { PagesTitle, ContactCard } from '../../components'
 
 function Contacts() {
   return (
-    <Container sx={{height: "100vh", paddingTop: "5rem"}} maxWidth='lg'>
+  <Container sx={{height: "100vh", paddingTop: "5rem"}} >
         <PagesTitle title={"Meus Contatos"} />
         <Box my={20}>
             <ContactCard />
