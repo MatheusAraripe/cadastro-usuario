@@ -22,5 +22,14 @@ export const Theme = createTheme({
             dark: "#484D98",
             text: "#9C9FD5",
         }
-    }
+    },
+
+    breakpoints: {
+        values: {
+          mobile: 0,
+          tablet: 640,
+          laptop: 1024,
+          desktop: 1200,
+        },
+    },
 });

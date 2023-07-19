@@ -9,7 +9,7 @@ function ContactCard() {
             <h2>Matheus Araripe Lopes Correa</h2>
             <p>Nascimento: 02/06/2001</p>
         </Box>
-        <Box display={"flex"} justifyContent={'start'} alignItems={'center'} className="mainInfo">
+        <Box display={"flex"} justifyContent={'start'} alignItems={'center'} className="mainInfo" >
             <Avatar sx={{marginRight: "3rem"}}>M</Avatar>
             <p>CPF: 183.021.467.57</p>
             <p>Sexo: Masculino</p>
