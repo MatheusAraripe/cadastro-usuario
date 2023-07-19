@@ -1,9 +1,9 @@
 import React from 'react'
-import { PagesTitle } from '../components'
+import { MainContainer } from '../components'
 
 function NewContact() {
   return (
-    <PagesTitle title={"Adicione um novo contato"} />
+    <MainContainer title={"Adicione um novo contato"} />
   )
 }
 

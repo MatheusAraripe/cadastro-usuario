@@ -1,9 +1,9 @@
 import React from 'react'
-import { PagesTitle } from '../components'
+import { MainContainer } from '../components'
 
 function Home() {
   return (
-    <PagesTitle title={"Home"} />
+    <MainContainer title={"Home"} />
   )
 }
 
