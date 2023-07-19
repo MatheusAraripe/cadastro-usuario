@@ -16,7 +16,7 @@ function Navbar() {
       justifyContent={'center'}
       alignItems={"center"}
       height={"100%"}
-      width={"15vh"}
+      width={{lg: "15vh", md: '7vh'}}
       >
         <Box my={3} >
           <Link to="/" className='navLink'>{<CottageIcon fontSize='medium'/>}</Link>
@@ -29,7 +29,6 @@ function Navbar() {
         </Box>
       </Box>
     </Drawer>
-
   )
 }
 
