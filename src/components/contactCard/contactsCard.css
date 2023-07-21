@@ -1,14 +1,10 @@
-.cardContainer{
-    border-radius: 10px;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-}
-
 .avatar-card{
     margin-right: 3rem;
 }
 
 .mainInfo p{
     margin-right: 4rem;
+    
 }
 
 .mainInfo{
@@ -17,6 +13,13 @@
     align-items: center;
 }
 
+.cardHead p{
+    background-color: #E2FAF3;
+    color: #67C7A9;
+    padding: 4px;
+    border-radius: 30px;
+
+}
 @media screen and (max-width: 700px) {
     .mainInfo p{
         font-size: small;
@@ -37,7 +40,9 @@
     }
 
     .cardHead p{
-        text-align: end;
+        padding: 3px;
+        border-radius: 15px;
+        text-align: center;
     }
 
     .avatar-card{
