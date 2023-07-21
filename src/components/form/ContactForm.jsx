@@ -7,18 +7,18 @@ import React from 'react'
 function ContactForm() {
   return (
     <FormControl sx={{backgroundColor: 'red'}} fullWidth>
-        <Grid container bgcolor={'purple.main'} mt={12} rowSpacing={2} color='purple.text' >
+        <Grid container bgcolor={'purple.main'} mt={12} rowSpacing={2} color='purple.text' columnSpacing={1}>
             <Grid xs={12} sm={12} item>
                 <TextField id="name" label="Nome completo" variant="outlined" fullWidth color="secondary"/>
             </Grid>
-            <Grid item xs={12} sm={5}>
+            <Grid item xs={12} sm={5} >
                 <TextField id="cpf" label="CPF" variant="outlined" fullWidth color="secondary"/>
             </Grid>
             <Grid item xs={12} sm={4} >
                 <DatePicker label="Data de nascimento" sx={{width: '100%'}}/>
             </Grid>
-            <Grid xs={6} sm={3} item display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
-                <FormLabel id="genderLable" sx={{color: 'purple.text', marginRight: '3px'}} color='secondary'>Sexo: </FormLabel>
+            <Grid xs={12} sm={3} item display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
+                <FormLabel id="genderLable" sx={{color: 'purple.text', marginRight: '3px'}} color='secondary'>Sexo</FormLabel>
                 <RadioGroup
                 defaultValue="female"
                 fullWidth
@@ -34,6 +34,9 @@ function ContactForm() {
                     control={<Radio disableRipple icon={<MaleIcon sx={{color: 'purple.text'}}/>} checkedIcon={<MaleIcon sx={{color: 'purple.dark'}}/>}/>} 
                     label="Masculino" />
                 </RadioGroup>
+            </Grid>
+            <Grid item xs={12} sm={12}>
+                <TextField id='adresses' label='Endereço' variant='outlined' fullWidth color='secondary' />
             </Grid>
         </Grid>
     </FormControl>
