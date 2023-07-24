@@ -12,8 +12,7 @@ function ResponsiveNavbar() {
         boxShadow: '12',
         }}>
         <Tab value={'1'} label='Home'/>
-        <Tab value={'2'} label='Novo Contato'/>
-        <Tab value={'5'} label='Contatos'/>
+        <Tab value={'5'} label='Meus Contatos'/>
       </TabList>
     </TabContext>
   )

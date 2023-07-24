@@ -5,11 +5,11 @@ import ResponsiveNavbar from '../ResponsiveNavbar/ResponsiveNavbar'
 
 function MainContainer({ children, title }) {
   return (
-    <Container sx={{height: "100vh"}} maxWidth={'100vh'}>
+    <Container sx={{height: "100vh"}} maxWidth={'100vh'} >
         <Grid container>
             {/* esconde a navbar para mobile */}
             <Hidden mdDown>
-                <Grid item md={2} sm={2}>
+                <Grid item md={1} sm={2}>
                     <Navbar />
                 </Grid>
             </Hidden>
@@ -18,7 +18,7 @@ function MainContainer({ children, title }) {
                     <ResponsiveNavbar />
                 </Grid>
             </Hidden>
-            <Grid item md={8} sm={12} xs={12}>
+            <Grid item md={11} xs={12}>
                 <Box my={15} >
                     <h1>{title}</h1>
                     {children}

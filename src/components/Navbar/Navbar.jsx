@@ -16,13 +16,10 @@ function Navbar() {
       justifyContent={'center'}
       alignItems={"center"}
       height={"100%"}
-      width={{lg: "10vh", md: '7vh'}}
+      width={{lg: "8vh", md: '7vh'}}
       >
         <Box my={3} >
           <Link to="/" className='navLink'>{<CottageIcon fontSize='medium'/>}</Link>
-        </Box>
-        <Box my={3}>
-          <Link to="/newcontact" className='navLink'>{<GroupAddIcon fontSize='medium'/>}</Link>
         </Box>
         <Box my={3}>
         <Link to="/contacts" className='navLink'>{<RecentActorsIcon fontSize='medium'/>}</Link>
