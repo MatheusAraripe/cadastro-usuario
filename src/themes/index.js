@@ -21,6 +21,9 @@ export const Theme = createTheme({
             main: "#F0F3FF",
             dark: "#484D98",
             text: "#9C9FD5",
+        },
+        background:{
+            modal: 'rgba(200, 200, 200, 0.904)'
         }
     },
 

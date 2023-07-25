@@ -1,12 +1,21 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Box, Grid, Hidden} from '@mui/material'
-import { ContactCard, MainContainer, ContactForm } from '../../components'
+import { ContactCard, MainContainer, ContactForm, ButtonFormResponsive, ContactFormResponsive} from '../../components'
 
 
 function Contacts() {
+
+  const [isOpen, setIsOpen] = useState(true);
   return (
+    <>
     <Grid container justifyContent={'center'} alignItems={'center'}>
+    {isOpen && <ContactFormResponsive />}
       <Grid item xl={9} lg={8} md={8} borderRight={2} borderColor={'grey.300'}>
+        <Hidden mdUp>
+            <Box sx={{position: 'absolute', right: 0, margin: '2.5rem'}}>
+              <ButtonFormResponsive />
+            </Box>
+        </Hidden>
         <MainContainer title={"Meus Contatos"}>
             <Box my={20} >
                 <ContactCard />
@@ -19,6 +28,7 @@ function Contacts() {
         </Grid>
       </Hidden>
     </Grid>
+    </>
   )
 }
 

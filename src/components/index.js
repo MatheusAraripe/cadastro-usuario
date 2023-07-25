@@ -3,5 +3,15 @@ import Navbar from "./Navbar/Navbar";
 import ContactCard from "./contactCard/ContactCard";
 import ResponsiveNavbar from "./ResponsiveNavbar/ResponsiveNavbar";
 import ContactForm from "./form/ContactForm";
+import ButtonFormResponsive from "./form/ButtonFormResponsive";
+import ContactFormResponsive from "./form/ContactFormResponsive";
 
-export {MainContainer, Navbar, ContactCard, ResponsiveNavbar, ContactForm};
+export {
+    MainContainer, 
+    Navbar, 
+    ContactCard, 
+    ResponsiveNavbar, 
+    ContactForm, 
+    ButtonFormResponsive, 
+    ContactFormResponsive,
+};

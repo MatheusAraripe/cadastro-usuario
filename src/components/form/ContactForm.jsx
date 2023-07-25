@@ -43,7 +43,7 @@ function ContactForm() {
   const classes = useStyles()
   return (
     <form onSubmit={formik.handleSubmit}>
-            <Grid container rowSpacing={4} color='purple.text' p={2} justifyContent={'center'}>
+            <Grid container rowSpacing={4} color='purple.text' backgroundColor="purple.main" p={2} justifyContent={'center'} borderRadius={'8px'}>
                 <h2>Adicione um novo contato</h2>
                 <Grid xs={12} sm={12} item>
                     <FormControl fullWidth error={formik.touched.name && Boolean(formik.errors.name)}>
