@@ -3,7 +3,7 @@ import ContactForm from './ContactForm'
 import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
 import { Box, IconButton} from '@mui/material'
 
-function ContactFormResponsive() {
+function ContactFormResponsive({setIsOpen}) {
   return (
     <Box sx={{
         position: 'fixed',
@@ -17,7 +17,7 @@ function ContactFormResponsive() {
         }}>
 
         <Box sx={{position: 'absolute', right: 0, margin: '2.5rem'}}>
-            <IconButton sx={{color: 'blue.dark', backgroundColor: 'blue.main', boxShadow: 2}}>
+            <IconButton sx={{color: 'blue.dark', backgroundColor: 'blue.main', boxShadow: 2}} onClick={()=>setIsOpen(false)}>
                 <CloseTwoToneIcon fontSize='small' />
             </IconButton>
         </Box>

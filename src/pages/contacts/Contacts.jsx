@@ -5,15 +5,15 @@ import { ContactCard, MainContainer, ContactForm, ButtonFormResponsive, ContactF
 
 function Contacts() {
 
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
     <Grid container justifyContent={'center'} alignItems={'center'}>
-    {isOpen && <ContactFormResponsive />}
+    {isOpen && <ContactFormResponsive setIsOpen={setIsOpen}/>}
       <Grid item xl={9} lg={8} md={8} borderRight={2} borderColor={'grey.300'}>
         <Hidden mdUp>
             <Box sx={{position: 'absolute', right: 0, margin: '2.5rem'}}>
-              <ButtonFormResponsive />
+              <ButtonFormResponsive setIsOpen={setIsOpen}/>
             </Box>
         </Hidden>
         <MainContainer title={"Meus Contatos"}>
