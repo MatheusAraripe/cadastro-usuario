@@ -6,6 +6,7 @@ import { DatePicker } from '@mui/x-date-pickers';
 import MaleIcon from '@mui/icons-material/Male';
 import FemaleIcon from '@mui/icons-material/Female';
 import React from 'react'
+import dayjs from 'dayjs';
 
 const useStyles = makeStyles({
     btn:{
@@ -25,13 +26,14 @@ function ContactForm() {
     });
 
 
+
   // Configurar o useFormik com a resolução do Yup
   const formik = useFormik({
     initialValues: {
       name: '',
       cpf: '',
       address: '',
-      date: '',
+      date: null,
     },
     validationSchema,
     onSubmit: (values) => {
@@ -79,7 +81,7 @@ function ContactForm() {
                     <FormControl fullWidth error={formik.touched.cpf && Boolean(formik.errors.cpf)}>
                         <DatePicker
                         value={formik.values.date}
-                        onChange={formik.handleChange}
+                        onChange={(value) => formik.setFieldValue('date', value)}
                         onBlur={formik.handleBlur}
                         label="Data de nascimento" 
                         sx={{width: '100%'}}
