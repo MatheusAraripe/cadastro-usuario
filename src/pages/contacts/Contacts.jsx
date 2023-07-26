@@ -1,9 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import { ContactsContext } from '../../context/ContactsContext';
 import { Box, Grid, Hidden} from '@mui/material'
 import { ContactCard, MainContainer, ContactForm, ButtonFormResponsive, ContactFormResponsive} from '../../components'
 
 
 function Contacts() {
+
+  const {getContactsFromLs} = useContext(ContactsContext);
+
+  const contacts = getContactsFromLs();
 
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -18,7 +23,18 @@ function Contacts() {
         </Hidden>
         <MainContainer title={"Meus Contatos"}>
             <Box my={20} >
-                <ContactCard />
+                {contacts.map((item, index) => {
+                  return(
+                    <ContactCard
+                    key={index}
+                    name={item.name}
+                    cpf={item.cpf}
+                    address={item.address}
+                    gender={item.gender}
+                    date={item.date}
+                    />
+                  )
+                })}
             </Box>
         </MainContainer>
       </Grid>
