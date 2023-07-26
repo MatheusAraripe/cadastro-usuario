@@ -2,11 +2,13 @@ import { TextField, Radio, RadioGroup, Grid, FormControlLabel, FormControl, Form
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { makeStyles } from '@mui/styles';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import format from 'date-fns/format';
 import { DatePicker } from '@mui/x-date-pickers';
 import MaleIcon from '@mui/icons-material/Male';
 import FemaleIcon from '@mui/icons-material/Female';
 import React from 'react'
-import dayjs from 'dayjs';
 
 const useStyles = makeStyles({
     btn:{
@@ -79,14 +81,16 @@ function ContactForm() {
                 </Grid>
                 <Grid item xs={12}  >
                     <FormControl fullWidth error={formik.touched.cpf && Boolean(formik.errors.cpf)}>
-                        <DatePicker
-                        value={formik.values.date}
-                        onChange={(value) => formik.setFieldValue('date', value)}
-                        onBlur={formik.handleBlur}
-                        label="Data de nascimento" 
-                        sx={{width: '100%'}}
-                        />
-                        {/* {formik.touched.date && <FormHelperText>{formik.errors.date}</FormHelperText>} */}
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <DatePicker
+                            value={formik.values.date}
+                            onChange={(value) => formik.setFieldValue('date', value)}
+                            onBlur={formik.handleBlur}
+                            label="Data de nascimento" 
+                            sx={{width: '100%'}}
+                            />
+                            {formik.touched.date && <FormHelperText>{formik.errors.date}</FormHelperText>}
+                        </LocalizationProvider>
                     </FormControl>
                 </Grid>
                 <Grid xs={12}  item display={'flex'}  justifyContent={'start'} alignItems={'center'}>
