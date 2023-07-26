@@ -39,7 +39,13 @@ function ContactForm() {
     },
     validationSchema,
     onSubmit: (values) => {
-      // Lógica para lidar com o envio do formulário
+      // Formate a data para o formato "DD/MM/YYYY"
+      const dataFormatada = values.date
+        ? format(new Date(values.date), 'dd/MM/yyyy')
+        : '';
+
+      // Faça o que precisa com a data formatada (neste exemplo, vamos apenas exibir um alerta)
+      alert(`Data selecionada: ${dataFormatada}`);
       console.log(values);
     },
   });
