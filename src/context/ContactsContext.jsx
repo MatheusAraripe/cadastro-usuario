@@ -13,15 +13,21 @@ export const ContactsProvider = ({children}) => {
         return [];
     };
     
-    const [contacts, setContacts] = useState(getContactsFromLs);
+    //const [contacts, setContacts] = useState(getContactsFromLs);
 
 
     // guarda contatos no localStorage
-    const addUser = (name) =>{
+    const addContact = (name, cpf, address, date, gender) =>{
+
+        const contacts = getContactsFromLs();
 
         const newContact = {
             id: uuidv4(),
             name,
+            cpf,
+            address,
+            date,
+            gender
         }
 
         contacts.push(newContact)
@@ -29,7 +35,7 @@ export const ContactsProvider = ({children}) => {
     };
 
 
-    return <ContactsContext.Provider>
+    return <ContactsContext.Provider value={{addContact}}>
         {children}
     </ContactsContext.Provider>
 };

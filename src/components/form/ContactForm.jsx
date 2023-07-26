@@ -1,6 +1,7 @@
 import { TextField, Radio, RadioGroup, Grid, FormControlLabel, FormControl, FormLabel, Button, FormHelperText} from '@mui/material'
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { ContactsContext } from '../../context/ContactsContext';
 import { makeStyles } from '@mui/styles';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers';
@@ -8,7 +9,7 @@ import format from 'date-fns/format';
 import { DatePicker } from '@mui/x-date-pickers';
 import MaleIcon from '@mui/icons-material/Male';
 import FemaleIcon from '@mui/icons-material/Female';
-import React from 'react'
+import React, {useContext} from 'react'
 
 const useStyles = makeStyles({
     btn:{
@@ -25,9 +26,11 @@ function ContactForm() {
         cpf: yup.string().required('O CPF é obrigatório').min(11, 'CPF incompleto').max(11,'Formato inválido'),
         address: yup.string().required('Endereço é obrigatório'),
         date: yup.date().required('Data obrigatória'),
+      
     });
 
 
+  const {addContact} = useContext(ContactsContext);
 
   // Configurar o useFormik com a resolução do Yup
   const formik = useFormik({
@@ -35,17 +38,15 @@ function ContactForm() {
       name: '',
       cpf: '',
       address: '',
+      gender: 'female',
       date: null,
     },
     validationSchema,
     onSubmit: (values) => {
       // Formate a data para o formato "DD/MM/YYYY"
-      const dataFormatada = values.date
-        ? format(new Date(values.date), 'dd/MM/yyyy')
-        : '';
+      const formatDate = values.date? format(new Date(values.date), 'dd/MM/yyyy') : '';
 
-      // Faça o que precisa com a data formatada (neste exemplo, vamos apenas exibir um alerta)
-      alert(`Data selecionada: ${dataFormatada}`);
+      addContact(values.name, values.cpf, values.address, formatDate, values.gender)
       console.log(values);
     },
   });
@@ -100,22 +101,26 @@ function ContactForm() {
                     </FormControl>
                 </Grid>
                 <Grid xs={12}  item display={'flex'}  justifyContent={'start'} alignItems={'center'}>
-                    <FormLabel id="genderLable" sx={{color: 'purple.text', marginRight: '3px'}} color='secondary'>Sexo</FormLabel>
-                    <RadioGroup
-                    defaultValue="female"
-                    fullWidth
-                    name="genderOptions"
-                    row
-                    >
-                        <FormControlLabel 
-                        value="female"
-                        control={<Radio disableRipple icon={<FemaleIcon sx={{color: 'purple.text'}}/>} checkedIcon={<FemaleIcon sx={{color: 'purple.dark'}}/>}/>}
-                        label="Feminino" />
-                        <FormControlLabel 
-                        value="male" 
-                        control={<Radio disableRipple icon={<MaleIcon sx={{color: 'purple.text'}}/>} checkedIcon={<MaleIcon sx={{color: 'purple.dark'}}/>}/>} 
-                        label="Masculino" />
-                    </RadioGroup>
+                    <FormControl fullWidth>
+                        <FormLabel id="genderLable" sx={{color: 'purple.text', marginRight: '3px'}} color='secondary'>Sexo</FormLabel>
+                        <RadioGroup
+                        defaultValue={formik.values.gender}
+                        fullWidth
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        name="gender"
+                        row
+                        >
+                            <FormControlLabel 
+                            value="female"
+                            control={<Radio disableRipple icon={<FemaleIcon sx={{color: 'purple.text'}}/>} checkedIcon={<FemaleIcon sx={{color: 'purple.dark'}}/>}/>}
+                            label="Feminino" />
+                            <FormControlLabel 
+                            value="male" 
+                            control={<Radio disableRipple icon={<MaleIcon sx={{color: 'purple.text'}}/>} checkedIcon={<MaleIcon sx={{color: 'purple.dark'}}/>}/>} 
+                            label="Masculino" />
+                        </RadioGroup>
+                    </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={12}>
                     <FormControl fullWidth error={formik.touched.address && Boolean(formik.errors.address)}>
