@@ -38,9 +38,8 @@ function ContactForm() {
   const {addContact} = useContext(ContactsContext);
 
   const dataSubmit = (data) => {
-    //const formatDate = format(new Date(values.date), 'dd/MM/yyyy');
-    console.log('clicado!!');
-    console.log(data);
+    const formatDate = format(new Date(data.date), 'dd/MM/yyyy');
+    addContact(data.name, data.cpf, data.address, formatDate, data.gender)
     reset();
   } 
   
@@ -103,8 +102,7 @@ function ContactForm() {
                                 }
                             }}
                             />
-                       
-                    </LocalizationProvider>
+                        </LocalizationProvider>
                     )}
                     />
                 </Grid>
