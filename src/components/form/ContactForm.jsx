@@ -24,7 +24,7 @@ const validationSchema = yup.object().shape({
     name: yup.string().required('O nome é obrigatório'),
     cpf: yup.string().required('O CPF é obrigatório').min(11, 'CPF incompleto').max(11,'Formato inválido'),
     address: yup.string().required('Endereço é obrigatório'),
-    //date: yup.date().required('Data obrigatória'),
+    date: yup.date().required('Data obrigatória'),
   
 });
 
@@ -58,7 +58,6 @@ function ContactForm() {
                     render={({field}) => (
                         <TextField
                         {...field}
-                        name='name'
                         label='Nome completo' 
                         variant="outlined" 
                         fullWidth
@@ -84,20 +83,31 @@ function ContactForm() {
                             />
                         )}/>
                 </Grid>
-                {/* <Grid item xs={12}  >
-                    <FormControl fullWidth error={formik.touched.cpf && Boolean(formik.errors.cpf)}>
+                <Grid item xs={12}  >
+                    <Controller
+                    name="date"
+                    control={control}
+                    defaultValue={null}
+                    render={({field}) => (
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DatePicker
-                            value={null}
-                            onChange={(value) => formik.setFieldValue('date', value)}
-                            onBlur={formik.handleBlur}
+                            {...field}
                             label="Data de nascimento" 
                             sx={{width: '100%'}}
+                            format='DD/MM/YYYY'
+                            slotProps={{
+                                textField:{
+                                    variant: 'outlined',
+                                    error: !!errors.date,
+                                    helperText: errors.date?.message,
+                                }
+                            }}
                             />
-                            {formik.touched.date && <FormHelperText>{formik.errors.date}</FormHelperText>}
-                        </LocalizationProvider>
-                    </FormControl>
-                </Grid> */}
+                       
+                    </LocalizationProvider>
+                    )}
+                    />
+                </Grid>
                 <Grid xs={12}  item display={'flex'}  justifyContent={'start'} alignItems={'center'}>
                     <FormLabel id="genderLable" sx={{color: 'purple.text', marginRight: '3px'}} color='secondary'>Sexo</FormLabel>
                     <Controller
