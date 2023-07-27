@@ -23,6 +23,7 @@ function Contacts() {
         </Hidden>
         <MainContainer title={"Meus Contatos"}>
             <Box my={20} >
+              <div style={{ maxHeight: '450px', overflowY: 'scroll', border: '1px solid #ccc', padding: '1rem'}}>
                 {contacts.map((item, index) => {
                   return(
                     <ContactCard
@@ -35,6 +36,7 @@ function Contacts() {
                     />
                   )
                 })}
+              </div>
             </Box>
         </MainContainer>
       </Grid>
