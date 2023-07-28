@@ -16,7 +16,7 @@
 }
 
 .scrollContainer::-webkit-scrollbar-thumb {
-    background-color: #484D98;    /* color of the scroll thumb */
+    background-color: #9C9FD5;    /* color of the scroll thumb */
     border-radius: 20px;       /* roundness of the scroll thumb */
     border: 3px solid #F0F3FF;  /* creates padding around scroll thumb */
 }
