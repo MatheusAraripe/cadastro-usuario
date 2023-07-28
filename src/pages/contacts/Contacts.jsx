@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react'
 import { ContactsContext } from '../../context/ContactsContext';
 import { Box, Grid, Hidden} from '@mui/material'
-import { ContactCard, MainContainer, ContactForm, ButtonFormResponsive, ContactFormResponsive} from '../../components'
+import { ContactCard, MainContainer, ContactForm, ButtonFormResponsive, ContactFormResponsive, ScrollCards} from '../../components'
 
 function Contacts() {
 
@@ -28,7 +28,7 @@ function Contacts() {
         </Hidden>
         <MainContainer title={"Meus Contatos"}>
             <Box my={20} >
-              <div style={{ maxHeight: '450px', overflowY: 'scroll', border: '1px solid #ccc', padding: '1rem'}}>
+              <ScrollCards>
                 {myContacts.map((item, index) => {
                   return(
                     <ContactCard
@@ -41,7 +41,7 @@ function Contacts() {
                     />
                   )
                 })}
-              </div>
+              </ScrollCards>
             </Box>
         </MainContainer>
       </Grid>

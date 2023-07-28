@@ -19,7 +19,7 @@ function MainContainer({ children, title }) {
                 </Grid>
             </Hidden>
             <Grid item md={11} xs={12}>
-                <Box my={15} >
+                <Box my={15}>
                     <h1>{title}</h1>
                     {children}
                 </Box>

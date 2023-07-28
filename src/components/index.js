@@ -5,6 +5,7 @@ import ResponsiveNavbar from "./ResponsiveNavbar/ResponsiveNavbar";
 import ContactForm from "./form/ContactForm";
 import ButtonFormResponsive from "./form/ButtonFormResponsive";
 import ContactFormResponsive from "./form/ContactFormResponsive";
+import ScrollCards from "./scrollCards/ScrollCards";
 
 export {
     MainContainer, 
@@ -14,4 +15,5 @@ export {
     ContactForm, 
     ButtonFormResponsive, 
     ContactFormResponsive,
+    ScrollCards,
 };
