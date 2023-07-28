@@ -10,7 +10,11 @@ function ContactCard({name, address, cpf, gender, date}) {
             <p>Nascimento: {date}</p>
         </Box>
         <Box className="mainInfo" >
-            <Avatar src='src\assets\maleAvatar.jpg' alt="Male Avatar" className='avatar-card' sx={{boxShadow: '6'}} />
+            {gender === 'Masculino'? 
+              <Avatar src='src\assets\maleAvatar.jpg' alt="Male Avatar" className='avatar-card' sx={{boxShadow: '6'}} />
+              :
+              <Avatar src='src\assets\femaleAvatar.jpg' alt="Male Avatar" className='avatar-card' sx={{boxShadow: '6'}} />
+            }
             <p>CPF: {cpf}</p>
             <p>Sexo: {gender}</p>
             <p>Endereço: {address}</p>
