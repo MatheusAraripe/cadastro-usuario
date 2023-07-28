@@ -28,18 +28,24 @@ const validationSchema = yup.object().shape({
   
 });
 
-function ContactForm() {
+function ContactForm({setMyContacts}) {
 
   const { control, handleSubmit, reset, formState: { errors } } = useForm({
       resolver: yupResolver(validationSchema)
     });
 
 
-  const {addContact} = useContext(ContactsContext);
+  const {addContact, newContact, getContactsFromLs} = useContext(ContactsContext);
 
 
   const dataSubmit = (data) => {
     const formatDate = format(new Date(data.date), 'dd/MM/yyyy');
+
+    const LsContacts = getContactsFromLs();
+    // hook apenas para renderizar os contatos de maneira automática na tela
+    setMyContacts([...LsContacts, newContact(data.name, data.cpf, data.address, formatDate, data.gender)])
+
+    // depois de renderizar na tela adiciona ao local storage
     addContact(data.name, data.cpf, data.address, formatDate, data.gender)
     reset();
   } 

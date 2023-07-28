@@ -5,7 +5,13 @@ import { ContactCard, MainContainer, ContactForm, ButtonFormResponsive, ContactF
 
 function Contacts() {
 
-  const {contacts} = useContext(ContactsContext);
+  const {getContactsFromLs} = useContext(ContactsContext);
+
+  const [myContacts, setMyContacts] = useState([]);
+
+  useEffect(() => {
+    setMyContacts(getContactsFromLs())
+  },[]);
 
   // botão para formulário responsivo
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +29,7 @@ function Contacts() {
         <MainContainer title={"Meus Contatos"}>
             <Box my={20} >
               <div style={{ maxHeight: '450px', overflowY: 'scroll', border: '1px solid #ccc', padding: '1rem'}}>
-                {contacts.map((item, index) => {
+                {myContacts.map((item, index) => {
                   return(
                     <ContactCard
                     key={index}
@@ -41,7 +47,7 @@ function Contacts() {
       </Grid>
       <Hidden mdDown>
         <Grid item xl={3} lg={4} md={4} sx={{backgroundColor: 'purple.main'}} height={'100vh'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
-          <ContactForm/>
+          <ContactForm setMyContacts={setMyContacts}/>
         </Grid>
       </Hidden>
     </Grid>
