@@ -5,14 +5,7 @@ import { ContactCard, MainContainer, ContactForm, ButtonFormResponsive, ContactF
 
 function Contacts() {
 
-  const {getContactsFromLs} = useContext(ContactsContext);
-
-  const [contacts, setContacts] = useState([]);
-
-  useEffect(() => {
-    const storageContacts = getContactsFromLs();
-    setContacts(storageContacts)
-  },[]);
+  const {contacts} = useContext(ContactsContext);
 
   // botão para formulário responsivo
   const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +41,7 @@ function Contacts() {
       </Grid>
       <Hidden mdDown>
         <Grid item xl={3} lg={4} md={4} sx={{backgroundColor: 'purple.main'}} height={'100vh'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
-          <ContactForm setContacts={setContacts}/>
+          <ContactForm/>
         </Grid>
       </Hidden>
     </Grid>
