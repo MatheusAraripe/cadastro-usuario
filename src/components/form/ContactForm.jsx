@@ -28,18 +28,21 @@ const validationSchema = yup.object().shape({
   
 });
 
-function ContactForm() {
+function ContactForm({setContacts}) {
 
   const { control, handleSubmit, reset, formState: { errors } } = useForm({
       resolver: yupResolver(validationSchema)
     });
 
 
-  const {addContact} = useContext(ContactsContext);
+  const {addContact, getContactsFromLs, makeNewContact} = useContext(ContactsContext);
+  const contacts = getContactsFromLs();
 
   const dataSubmit = (data) => {
     const formatDate = format(new Date(data.date), 'dd/MM/yyyy');
     addContact(data.name, data.cpf, data.address, formatDate, data.gender)
+    const newContact = makeNewContact(data.name, data.cpf, data.address, formatDate, data.gender)
+    setContacts([...contacts, newContact])
     reset();
   } 
   

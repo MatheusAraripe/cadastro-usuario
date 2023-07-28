@@ -1,16 +1,22 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import { ContactsContext } from '../../context/ContactsContext';
 import { Box, Grid, Hidden} from '@mui/material'
 import { ContactCard, MainContainer, ContactForm, ButtonFormResponsive, ContactFormResponsive} from '../../components'
-
 
 function Contacts() {
 
   const {getContactsFromLs} = useContext(ContactsContext);
 
-  const contacts = getContactsFromLs();
+  const [contacts, setContacts] = useState([]);
 
+  useEffect(() => {
+    const storageContacts = getContactsFromLs();
+    setContacts(storageContacts)
+  },[]);
+
+  // botão para formulário responsivo
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
     <Grid container justifyContent={'center'} alignItems={'center'}>
@@ -42,7 +48,7 @@ function Contacts() {
       </Grid>
       <Hidden mdDown>
         <Grid item xl={3} lg={4} md={4} sx={{backgroundColor: 'purple.main'}} height={'100vh'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
-          <ContactForm />
+          <ContactForm setContacts={setContacts}/>
         </Grid>
       </Hidden>
     </Grid>
