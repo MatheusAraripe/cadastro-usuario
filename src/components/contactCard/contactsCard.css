@@ -9,7 +9,7 @@
 
 .mainInfo{
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
 }
 

@@ -37,6 +37,7 @@ function Contacts() {
                   return(
                     <ContactCard
                     key={index}
+                    id={item.id}
                     name={item.name}
                     cpf={item.cpf}
                     address={item.address}

@@ -2,7 +2,6 @@ import { Drawer,Box } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import RecentActorsIcon from '@mui/icons-material/RecentActors';
-import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import CottageIcon from '@mui/icons-material/Cottage';
 import './navbar.css'
 

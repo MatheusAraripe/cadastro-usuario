@@ -13,6 +13,10 @@ export const ContactsProvider = ({children}) => {
         return [];
     };
 
+    const [contacts, setContacts] = useState(getContactsFromLs());
+
+   
+   // formato do objeto contact
    const newContact = (name, cpf, address, date, gender) => {
     return(
         {
@@ -28,14 +32,22 @@ export const ContactsProvider = ({children}) => {
 
     // guarda contatos no localStorage
     const addContact = (name, cpf, address, date, gender) =>{
-        const contacts = getContactsFromLs();
 
         contacts.push(newContact(name, cpf, address, date, gender))
         localStorage.setItem('contacts',JSON.stringify(contacts));
     };
 
+    // exclue contato
+    const excludeContact = (id) => {
+        const contactArry = getContactsFromLs();
+        const updatedList = contactArry.filter(item => item.id !== id);
 
-    return <ContactsContext.Provider value={{addContact, getContactsFromLs, newContact}}>
+        setContacts(updatedList)
+        localStorage.setItem('contacts', JSON.stringify(updatedList));
+    }
+
+
+    return <ContactsContext.Provider value={{addContact, getContactsFromLs, newContact, excludeContact}}>
         {children}
     </ContactsContext.Provider>
 };
