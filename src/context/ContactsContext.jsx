@@ -42,6 +42,12 @@ export const ContactsProvider = ({children}) => {
         return getContactsFromLs().filter(item => item.id !== id)
     }
 
+
+    // encontra um contato específico
+    const findContact = (id) => {
+        return getContactsFromLs().find(item => item.id === id)
+    }
+
     // exclue contato
     const excludeContact = (id) => {
         const updatedList = filterList(id)
@@ -51,7 +57,7 @@ export const ContactsProvider = ({children}) => {
     }
 
 
-    return <ContactsContext.Provider value={{addContact, getContactsFromLs, newContact, excludeContact, filterList}}>
+    return <ContactsContext.Provider value={{addContact, getContactsFromLs, newContact, excludeContact, filterList, findContact}}>
         {children}
     </ContactsContext.Provider>
 };

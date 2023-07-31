@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react'
 import { ContactsContext } from '../../context/ContactsContext';
 import { Box, Grid, Hidden} from '@mui/material'
-import { ContactCard, MainContainer, ContactForm, ButtonFormResponsive, ContactFormResponsive, ScrollCards, SuccessAlert} from '../../components'
+import { ContactCard, MainContainer, ContactForm, ButtonFormResponsive, ContactFormResponsive, ScrollCards, SuccessAlert, ModalContacts} from '../../components'
 
 function Contacts() {
 
@@ -19,9 +19,20 @@ function Contacts() {
   // botão para formulário responsivo
   const [isOpen, setIsOpen] = useState(false);
 
+  // hook para modal de contato
+  const [contactModalOpen, setContactModalOpen] = useState(false);
+
+  // definindo valores para o modal de contato
+  const [contactId, setContactID] = useState('');
+
   return (
     <>
+    {contactModalOpen && 
+    <ModalContacts id={contactId}/>
+    }
+
     {alert && <SuccessAlert/>}
+
     <Grid container justifyContent={'center'} alignItems={'center'}>
     {isOpen && <ContactFormResponsive setIsOpen={setIsOpen}/>}
       <Grid item xl={9} lg={8} md={8} sm={12} xs={12} borderRight={2} borderColor={'grey.300'}>
@@ -38,12 +49,9 @@ function Contacts() {
                     <ContactCard
                     key={index}
                     id={item.id}
-                    name={item.name}
-                    cpf={item.cpf}
-                    address={item.address}
-                    gender={item.gender}
-                    date={item.date}
                     setMyContacts={setMyContacts}
+                    setContactModalOpen={setContactModalOpen}
+                    setContactID={setContactID}
                     />
                   )
                 })}
