@@ -28,7 +28,7 @@ const validationSchema = yup.object().shape({
   
 });
 
-function ContactForm({setMyContacts}) {
+function ContactForm({setMyContacts, setAlert}) {
 
   const { control, handleSubmit, reset, formState: { errors } } = useForm({
       resolver: yupResolver(validationSchema)
@@ -47,6 +47,9 @@ function ContactForm({setMyContacts}) {
 
     // depois de renderizar na tela adiciona ao local storage
     addContact(data.name, data.cpf, data.address, formatDate, data.gender)
+    
+    // mostra o alerta de sucesso
+    setAlert(true)
     reset();
   } 
   

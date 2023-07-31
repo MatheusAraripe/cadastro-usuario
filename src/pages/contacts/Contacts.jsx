@@ -9,6 +9,9 @@ function Contacts() {
 
   const [myContacts, setMyContacts] = useState([]);
 
+  //hook para alerta
+  const [alert, setAlert] = useState(false)
+
   useEffect(() => {
     setMyContacts(getContactsFromLs())
   },[]);
@@ -18,7 +21,7 @@ function Contacts() {
 
   return (
     <>
-    <SuccessAlert/>
+    {alert && <SuccessAlert/>}
     <Grid container justifyContent={'center'} alignItems={'center'}>
     {isOpen && <ContactFormResponsive setIsOpen={setIsOpen}/>}
       <Grid item xl={9} lg={8} md={8} sm={12} xs={12} borderRight={2} borderColor={'grey.300'}>
@@ -48,7 +51,7 @@ function Contacts() {
       </Grid>
       <Hidden mdDown>
         <Grid item xl={3} lg={4} md={4} sx={{backgroundColor: 'purple.main'}} height={'100vh'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
-          <ContactForm setMyContacts={setMyContacts}/>
+          <ContactForm setMyContacts={setMyContacts} setAlert={setAlert}/>
         </Grid>
       </Hidden>
     </Grid>
