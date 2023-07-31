@@ -43,6 +43,7 @@ function Contacts() {
                     address={item.address}
                     gender={item.gender}
                     date={item.date}
+                    setMyContacts={setMyContacts}
                     />
                   )
                 })}

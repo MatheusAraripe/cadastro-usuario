@@ -5,10 +5,14 @@ import './contactsCard.css'
 import { ContactsContext } from '../../context/ContactsContext';
 import React,{useContext} from 'react'
 
-function ContactCard({id, name, address, cpf, gender, date}) {
+function ContactCard({id, name, address, cpf, gender, date, setMyContacts}) {
 
- const {excludeContact} = useContext(ContactsContext);
+ const {excludeContact, filterList} = useContext(ContactsContext);
  const deleteContact = () => {
+
+  // hook apenas para renderizar os contatos de maneira automática na tela
+  setMyContacts(filterList(id));
+  // exclui contato
   excludeContact(id);
  }
 
@@ -28,7 +32,7 @@ function ContactCard({id, name, address, cpf, gender, date}) {
             <p>Sexo: {gender}</p>
             <p>Endereço: {address}</p>
             <EditTwoToneIcon sx={{color: 'green.text', cursor: 'pointer'}}/>
-            <Button onClick={deleteContact}><DeleteForeverTwoToneIcon color='error' sx={{cursor: 'pointer'}} /></Button>
+            <Button onClick={deleteContact} sx={{borderRadius: '100px'}}><DeleteForeverTwoToneIcon color='error' sx={{cursor: 'pointer'}} /></Button>
         </Box>
     </Box>
   )

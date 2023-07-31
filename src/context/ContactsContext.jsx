@@ -37,17 +37,21 @@ export const ContactsProvider = ({children}) => {
         localStorage.setItem('contacts',JSON.stringify(contacts));
     };
 
+    // filtra por id
+    const filterList = (id) => {
+        return getContactsFromLs().filter(item => item.id !== id)
+    }
+
     // exclue contato
     const excludeContact = (id) => {
-        const contactArry = getContactsFromLs();
-        const updatedList = contactArry.filter(item => item.id !== id);
+        const updatedList = filterList(id)
 
         setContacts(updatedList)
         localStorage.setItem('contacts', JSON.stringify(updatedList));
     }
 
 
-    return <ContactsContext.Provider value={{addContact, getContactsFromLs, newContact, excludeContact}}>
+    return <ContactsContext.Provider value={{addContact, getContactsFromLs, newContact, excludeContact, filterList}}>
         {children}
     </ContactsContext.Provider>
 };
