@@ -6,6 +6,7 @@ import ContactForm from "./form/ContactForm";
 import ButtonFormResponsive from "./form/ButtonFormResponsive";
 import ContactFormResponsive from "./form/ContactFormResponsive";
 import ScrollCards from "./scrollCards/ScrollCards";
+import SuccessAlert from "./alert/SuccessAlert";
 
 export {
     MainContainer, 
@@ -16,4 +17,5 @@ export {
     ButtonFormResponsive, 
     ContactFormResponsive,
     ScrollCards,
+    SuccessAlert,
 };

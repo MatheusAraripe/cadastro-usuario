@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react'
 import { ContactsContext } from '../../context/ContactsContext';
 import { Box, Grid, Hidden} from '@mui/material'
-import { ContactCard, MainContainer, ContactForm, ButtonFormResponsive, ContactFormResponsive, ScrollCards} from '../../components'
+import { ContactCard, MainContainer, ContactForm, ButtonFormResponsive, ContactFormResponsive, ScrollCards, SuccessAlert} from '../../components'
 
 function Contacts() {
 
@@ -18,6 +18,7 @@ function Contacts() {
 
   return (
     <>
+    <SuccessAlert/>
     <Grid container justifyContent={'center'} alignItems={'center'}>
     {isOpen && <ContactFormResponsive setIsOpen={setIsOpen}/>}
       <Grid item xl={9} lg={8} md={8} sm={12} xs={12} borderRight={2} borderColor={'grey.300'}>
