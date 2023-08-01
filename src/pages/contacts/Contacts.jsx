@@ -28,7 +28,7 @@ function Contacts() {
   return (
     <>
     {contactModalOpen && 
-    <ModalContacts id={contactId}/>
+    <ModalContacts id={contactId} setContactModalOpen={setContactModalOpen}/>
     }
 
     {alert && <SuccessAlert/>}
