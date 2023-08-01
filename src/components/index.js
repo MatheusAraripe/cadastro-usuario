@@ -8,6 +8,7 @@ import ContactFormResponsive from "./form/ContactFormResponsive";
 import ScrollCards from "./scrollCards/ScrollCards";
 import SuccessAlert from "./alert/SuccessAlert";
 import ModalContacts from "./modalContacts/ModalContacts";
+import EditContactsModal from "./modalContacts/EditContactsModal";
 
 export {
     MainContainer, 
@@ -20,4 +21,5 @@ export {
     ScrollCards,
     SuccessAlert,
     ModalContacts,
+    EditContactsModal,
 };

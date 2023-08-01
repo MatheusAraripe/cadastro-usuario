@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react'
 import { ContactsContext } from '../../context/ContactsContext';
 import { Box, Grid, Hidden} from '@mui/material'
-import { ContactCard, MainContainer, ContactForm, ButtonFormResponsive, ContactFormResponsive, ScrollCards, SuccessAlert, ModalContacts} from '../../components'
+import { ContactCard, MainContainer, ContactForm, ButtonFormResponsive, ContactFormResponsive, ScrollCards, SuccessAlert, ModalContacts, EditContactsModal} from '../../components'
 
 function Contacts() {
 
@@ -27,6 +27,7 @@ function Contacts() {
 
   return (
     <>
+    
     {contactModalOpen && 
     <ModalContacts id={contactId} setContactModalOpen={setContactModalOpen}/>
     }
