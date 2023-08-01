@@ -22,12 +22,15 @@ function Contacts() {
   // hook para modal de contato
   const [contactModalOpen, setContactModalOpen] = useState(false);
 
+  //hook para modal de editar
+  const [editModalOpen, setEditModalOpen] = useState(false);
+
   // definindo valores para o modal de contato
   const [contactId, setContactID] = useState('');
 
   return (
     <>
-    
+    {editModalOpen && <EditContactsModal setEditModalOpen={setEditModalOpen}/>}
     {contactModalOpen && 
     <ModalContacts id={contactId} setContactModalOpen={setContactModalOpen}/>
     }
@@ -52,6 +55,7 @@ function Contacts() {
                     id={item.id}
                     setMyContacts={setMyContacts}
                     setContactModalOpen={setContactModalOpen}
+                    setEditModalOpen={setEditModalOpen}
                     setContactID={setContactID}
                     />
                   )

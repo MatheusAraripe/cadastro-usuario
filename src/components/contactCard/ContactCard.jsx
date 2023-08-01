@@ -5,7 +5,7 @@ import './contactsCard.css'
 import { ContactsContext } from '../../context/ContactsContext';
 import React,{useContext} from 'react'
 
-function ContactCard({id, setMyContacts, setContactModalOpen, setContactID}) {
+function ContactCard({id, setMyContacts, setContactModalOpen, setEditModalOpen, setContactID}) {
 
  const {excludeContact, filterList, findContact} = useContext(ContactsContext);
 
@@ -24,6 +24,10 @@ function ContactCard({id, setMyContacts, setContactModalOpen, setContactID}) {
   setContactModalOpen(true);
  }
 
+ const openEditModal = () => {
+  setEditModalOpen(true);
+ }
+
   return (
     <Box sx={{borderRadius: '10px',boxShadow: 1, cursor: 'pointer'}} px={5} py={2} my={3} onClick={openContactModal}>
         <Box py={2} display={'flex'} justifyContent={'space-between'} alignItems={'center'} className="cardHead">
@@ -39,7 +43,7 @@ function ContactCard({id, setMyContacts, setContactModalOpen, setContactID}) {
             <p>CPF: {contact.cpf}</p>
             <p>Sexo: {contact.gender}</p>
             <p>Endereço: {contact.address}</p>
-            <EditTwoToneIcon sx={{color: 'green.text', cursor: 'pointer'}}/>
+            <Button onClick={openEditModal} sx={{borderRadius: '100px'}}><EditTwoToneIcon sx={{color: 'green.text', cursor: 'pointer'}}/></Button>
             <Button onClick={deleteContact} sx={{borderRadius: '100px'}}><DeleteForeverTwoToneIcon color='error' sx={{cursor: 'pointer'}} /></Button>
         </Box>
     </Box>
