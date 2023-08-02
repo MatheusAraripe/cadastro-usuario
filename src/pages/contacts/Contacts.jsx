@@ -30,7 +30,7 @@ function Contacts() {
 
   return (
     <>
-    {editModalOpen && <EditContactsModal setEditModalOpen={setEditModalOpen}/>}
+    {editModalOpen && <EditContactsModal setEditModalOpen={setEditModalOpen} id={contactId}/>}
     {contactModalOpen && 
     <ModalContacts id={contactId} setContactModalOpen={setContactModalOpen}/>
     }

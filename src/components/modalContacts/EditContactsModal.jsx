@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { ContactsContext } from '../../context/ContactsContext';
 import { Button, Grid, FormLabel} from '@mui/material';
 import ModalMain from '../modalMain/ModalMain'
 import ModalContactsMain from './ModalContactsMain'
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
+import dayjs from 'dayjs';
 import * as yup from 'yup';
 import {InputText, InputRatio, InputDate} from '../form/index'
 
@@ -17,11 +19,16 @@ const validationSchema = yup.object().shape({
 });
 
 
-function EditContactsModal({setEditModalOpen}) {
+function EditContactsModal({id, setEditModalOpen}) {
 
   const { control, handleSubmit, reset, formState: { errors } } = useForm({
     resolver: yupResolver(validationSchema)
   });
+
+  const {findContact} = useContext(ContactsContext);
+
+  const contact = findContact(id);
+  const date = dayjs(contact.date)
 
   const closeModal = () => {
     setEditModalOpen(false);
@@ -35,26 +42,23 @@ function EditContactsModal({setEditModalOpen}) {
               <Button onClick={closeModal}>X</Button>
             </Grid>
             <Grid item xs={12}>
-              <InputText 
-              name={'name'} 
-              control={control} 
-              lable={'Nome completo'} 
-              error={!!errors.name} 
-              helperText={errors.name?.message} 
-              value={'teste'}/>
+              <InputText name={'name'} control={control} lable={'Nome completo'} error={!!errors.name} helperText={errors.name?.message} value={contact.name}/>
             </Grid>
             <Grid item xs={12}>
-              <InputText name={'cpf'} control={control} lable={'CPF'} error={!!errors.cpf} helperText={errors.cpf?.message} value={''}/>
+              <InputText name={'cpf'} control={control} lable={'CPF'} error={!!errors.cpf} helperText={errors.cpf?.message} value={contact.cpf}/>
             </Grid>
             <Grid item xs={12}>
-              <InputDate name={'date'} control={control} value={null} label={'Data de Nascimento'} error={!!errors.date} helperText={errors.date?.message} />
+              <InputDate name={'date'} control={control} value={date} label={'Data de Nascimento'} error={!!errors.date} helperText={errors.date?.message} />
             </Grid>
             <Grid xs={12}  item display={'flex'}  justifyContent={'start'} alignItems={'center'}>
               <FormLabel id="genderLable" sx={{color: 'purple.text', marginRight: '3px'}} color='secondary'>Sexo</FormLabel>
               <InputRatio name={'gender'} control={control} error={!!errors.gender} helperText={errors.gender?.message}/>
             </Grid>
             <Grid item xs={12} sm={12}>
-              <InputText name={'address'} control={control} lable={'Endereço'} error={!!errors.address} helperText={errors.address?.message} value={''}/>
+              <InputText name={'address'} control={control} lable={'Endereço'} error={!!errors.address} helperText={errors.address?.message} value={contact.address}/>
+            </Grid>
+            <Grid item xs={12}>
+              <Button type="submit" variant="text" fullWidth>Confirmar</Button>
             </Grid>
           </ModalContactsMain>
       </form>

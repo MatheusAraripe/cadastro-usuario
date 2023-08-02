@@ -26,6 +26,7 @@ function ContactCard({id, setMyContacts, setContactModalOpen, setEditModalOpen, 
 
  const openEditModal = (e) => {
   e.stopPropagation();
+  setContactID(id);
   setEditModalOpen(true);
  }
 

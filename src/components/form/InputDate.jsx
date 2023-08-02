@@ -10,12 +10,12 @@ function InputDate({name, control, value, label, error, helperText}) {
   const helperTxt = helperText
 
   return (
-    <Controller
-    name={name}
-    control={control}
-    defaultValue={value}
-    render={({field}) => (
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <Controller
+      name={name}
+      control={control}
+      defaultValue={value}
+      render={({field}) => (
             <DatePicker
             {...field}
             label={label} 
@@ -28,10 +28,10 @@ function InputDate({name, control, value, label, error, helperText}) {
                     helperText: helperTxt,
                 }
             }}
-            />
-        </LocalizationProvider>
-    )}
-    />
+              />
+      )}
+      />
+    </LocalizationProvider>
   )
 }
 

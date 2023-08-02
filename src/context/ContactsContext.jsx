@@ -57,7 +57,28 @@ export const ContactsProvider = ({children}) => {
     }
 
 
-    return <ContactsContext.Provider value={{addContact, getContactsFromLs, newContact, excludeContact, filterList, findContact}}>
+    const editContact = (id, name, cpf, address, date, gender) => {
+        const contactArry = getContactsFromLs();
+        const contact = findContact(id)
+        const index = contactArry.indexOf(contact);
+
+        const newEditConatc = {
+            id,
+            name,
+            cpf, 
+            address, 
+            date, 
+            gender
+        }
+
+        contactArry[index] = newEditConatc
+
+        setContacts(contactArry)
+        localStorage.setItem('contacts', JSON.stringify(contactArry));
+    }
+
+
+    return <ContactsContext.Provider value={{addContact, getContactsFromLs, newContact, excludeContact, filterList, findContact, editContact}}>
         {children}
     </ContactsContext.Provider>
 };
