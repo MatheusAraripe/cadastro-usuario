@@ -6,6 +6,7 @@ import ModalContactsMain from './ModalContactsMain'
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import dayjs from 'dayjs';
+import format from 'date-fns/format';
 import * as yup from 'yup';
 import {InputText, InputRatio, InputDate} from '../form/index'
 
@@ -21,11 +22,11 @@ const validationSchema = yup.object().shape({
 
 function EditContactsModal({id, setEditModalOpen}) {
 
-  const { control, handleSubmit, reset, formState: { errors } } = useForm({
+  const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(validationSchema)
   });
 
-  const {findContact} = useContext(ContactsContext);
+  const {findContact, editContact} = useContext(ContactsContext);
 
   const contact = findContact(id);
   const date = dayjs(contact.date)
@@ -34,9 +35,15 @@ function EditContactsModal({id, setEditModalOpen}) {
     setEditModalOpen(false);
   }
 
+  const handleEdit = (data) => {
+    const formatDate = format(new Date(data.date), 'dd/MM/yyyy');
+    editContact(id, data.name, data.cpf, data.address, formatDate, data.gender)
+    setEditModalOpen(false);
+  }
+
   return (
     <ModalMain>
-      <form>
+      <form onSubmit={handleSubmit(handleEdit)}>
         <ModalContactsMain>
             <Grid item xs={12} display={'flex'} justifyContent={'right'} alignItems={'center'}>
               <Button onClick={closeModal}>X</Button>
@@ -58,7 +65,7 @@ function EditContactsModal({id, setEditModalOpen}) {
               <InputText name={'address'} control={control} lable={'Endereço'} error={!!errors.address} helperText={errors.address?.message} value={contact.address}/>
             </Grid>
             <Grid item xs={12}>
-              <Button type="submit" variant="text" fullWidth>Confirmar</Button>
+              <Button type="submit" variant="text" fullWidth onClick={handleEdit}>Confirmar</Button>
             </Grid>
           </ModalContactsMain>
       </form>
