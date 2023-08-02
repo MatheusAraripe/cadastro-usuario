@@ -61,7 +61,6 @@ export const ContactsProvider = ({children}) => {
         const contactArry = getContactsFromLs();
         const contact = contactArry.find(user => user.id === id);
         const index = contactArry.indexOf(contact);
-        console.log(index);
 
         const newEditConatc = {
             id,

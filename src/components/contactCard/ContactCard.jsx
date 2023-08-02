@@ -5,9 +5,11 @@ import './contactsCard.css'
 import { ContactsContext } from '../../context/ContactsContext';
 import React,{useContext} from 'react'
 
-function ContactCard({id, name, cpf, address, date, gender, setMyContacts, setContactModalOpen, setEditModalOpen, setContactID}) {
+function ContactCard({item, setMyContacts, setContactModalOpen, setEditModalOpen, setItem}) {
 
  const {excludeContact, filterList, findContact} = useContext(ContactsContext);
+
+ const id = item.id
 
  // localiza o contato
 //  const contact = findContact(id);
@@ -20,31 +22,31 @@ function ContactCard({id, name, cpf, address, date, gender, setMyContacts, setCo
  }
 
  const openContactModal = () => {
-  setContactID(id);
+  setItem(item)
   setContactModalOpen(true);
  }
 
  const openEditModal = (e) => {
   e.stopPropagation();
-  setContactID(id);
+  setItem(item);
   setEditModalOpen(true);
  }
 
   return (
     <Box sx={{borderRadius: '10px',boxShadow: 1, cursor: 'pointer'}} px={5} py={2} my={3} onClick={openContactModal}>
         <Box py={2} display={'flex'} justifyContent={'space-between'} alignItems={'center'} className="cardHead">
-            <h2>{name}</h2>
-            <p>Nascimento: {date}</p>
+            <h2>{item.name}</h2>
+            <p>Nascimento: {item.date}</p>
         </Box>
         <Box className="mainInfo" >
-            {gender === 'Masculino'? 
+            {item.gender === 'Masculino'? 
               <Avatar src='src\assets\maleAvatar.jpg' alt="Male Avatar" className='avatar-card' sx={{boxShadow: '6'}} />
               :
               <Avatar src='src\assets\femaleAvatar.jpg' alt="Male Avatar" className='avatar-card' sx={{boxShadow: '6'}} />
             }
-            <p>CPF: {cpf}</p>
-            <p>Sexo: {gender}</p>
-            <p>Endereço: {address}</p>
+            <p>CPF: {item.cpf}</p>
+            <p>Sexo: {item.gender}</p>
+            <p>Endereço: {item.address}</p>
             <Button onClick={openEditModal} sx={{borderRadius: '100px'}}><EditTwoToneIcon sx={{color: 'green.text', cursor: 'pointer'}}/></Button>
             <Button onClick={deleteContact} sx={{borderRadius: '100px'}}><DeleteForeverTwoToneIcon color='error' sx={{cursor: 'pointer'}} /></Button>
         </Box>
