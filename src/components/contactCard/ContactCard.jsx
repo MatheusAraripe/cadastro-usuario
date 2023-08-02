@@ -5,12 +5,12 @@ import './contactsCard.css'
 import { ContactsContext } from '../../context/ContactsContext';
 import React,{useContext} from 'react'
 
-function ContactCard({id, setMyContacts, setContactModalOpen, setEditModalOpen, setContactID}) {
+function ContactCard({id, name, cpf, address, date, gender, setMyContacts, setContactModalOpen, setEditModalOpen, setContactID}) {
 
  const {excludeContact, filterList, findContact} = useContext(ContactsContext);
 
  // localiza o contato
- const contact = findContact(id);
+//  const contact = findContact(id);
 
  const deleteContact = () => {
   // hook apenas para renderizar os contatos de maneira automática na tela
@@ -33,18 +33,18 @@ function ContactCard({id, setMyContacts, setContactModalOpen, setEditModalOpen, 
   return (
     <Box sx={{borderRadius: '10px',boxShadow: 1, cursor: 'pointer'}} px={5} py={2} my={3} onClick={openContactModal}>
         <Box py={2} display={'flex'} justifyContent={'space-between'} alignItems={'center'} className="cardHead">
-            <h2>{contact.name}</h2>
-            <p>Nascimento: {contact.date}</p>
+            <h2>{name}</h2>
+            <p>Nascimento: {date}</p>
         </Box>
         <Box className="mainInfo" >
-            {contact.gender === 'Masculino'? 
+            {gender === 'Masculino'? 
               <Avatar src='src\assets\maleAvatar.jpg' alt="Male Avatar" className='avatar-card' sx={{boxShadow: '6'}} />
               :
               <Avatar src='src\assets\femaleAvatar.jpg' alt="Male Avatar" className='avatar-card' sx={{boxShadow: '6'}} />
             }
-            <p>CPF: {contact.cpf}</p>
-            <p>Sexo: {contact.gender}</p>
-            <p>Endereço: {contact.address}</p>
+            <p>CPF: {cpf}</p>
+            <p>Sexo: {gender}</p>
+            <p>Endereço: {address}</p>
             <Button onClick={openEditModal} sx={{borderRadius: '100px'}}><EditTwoToneIcon sx={{color: 'green.text', cursor: 'pointer'}}/></Button>
             <Button onClick={deleteContact} sx={{borderRadius: '100px'}}><DeleteForeverTwoToneIcon color='error' sx={{cursor: 'pointer'}} /></Button>
         </Box>

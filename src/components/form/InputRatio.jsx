@@ -4,12 +4,12 @@ import { Radio, RadioGroup, FormControlLabel } from '@mui/material'
 import MaleIcon from '@mui/icons-material/Male';
 import FemaleIcon from '@mui/icons-material/Female';
 
-function InputRatio({name, control,error, helperText}) {
+function InputRatio({name, value, control,error, helperText}) {
   return (
     <Controller
     name={name}
     control={control}
-    defaultValue="Feminino"
+    defaultValue={value}
     render={({field}) => (
         <RadioGroup
         {...field}

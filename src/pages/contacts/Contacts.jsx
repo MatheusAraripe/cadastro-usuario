@@ -53,6 +53,11 @@ function Contacts() {
                     <ContactCard
                     key={index}
                     id={item.id}
+                    name={item.name}
+                    date={item.date}
+                    address={item.address}
+                    gender={item.gender}
+                    cpf={item.cpf}
                     setMyContacts={setMyContacts}
                     setContactModalOpen={setContactModalOpen}
                     setEditModalOpen={setEditModalOpen}

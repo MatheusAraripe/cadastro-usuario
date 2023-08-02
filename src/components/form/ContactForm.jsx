@@ -71,7 +71,7 @@ function ContactForm({setMyContacts, setAlert}) {
                 </Grid>
                 <Grid xs={12}  item display={'flex'}  justifyContent={'start'} alignItems={'center'}>
                     <FormLabel id="genderLable" sx={{color: 'purple.text', marginRight: '3px'}} color='secondary'>Sexo</FormLabel>
-                    <InputRatio name={'gender'} control={control} error={!!errors.gender} helperText={errors.gender?.message}/>
+                    <InputRatio name={'gender'} value={"Feminino"} control={control} error={!!errors.gender} helperText={errors.gender?.message}/>
                 </Grid>
                 <Grid item xs={12} sm={12}>
                     <InputText name={'address'} control={control} lable={'Endereço'} error={!!errors.address} helperText={errors.address?.message} value={''}/>
