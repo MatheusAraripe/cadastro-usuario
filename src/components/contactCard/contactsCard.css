@@ -9,17 +9,10 @@
 
 .mainInfo{
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
     align-items: center;
 }
 
-.cardHead p{
-    background-color: #E2FAF3;
-    color: #67C7A9;
-    padding: 4px;
-    border-radius: 30px;
-
-}
 @media screen and (max-width: 700px) {
     .mainInfo p{
         font-size: small;
