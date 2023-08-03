@@ -21,11 +21,11 @@ function InputRatio({name, value, control,error, helperText}) {
         >
             <FormControlLabel 
             value="Feminino"
-            control={<Radio disableRipple icon={<FemaleIcon sx={{color: 'purple.text'}}/>} checkedIcon={<FemaleIcon sx={{color: 'purple.dark'}}/>}/>}
+            control={<Radio disableRipple icon={<FemaleIcon sx={{color: 'purple.text'}}/>} checkedIcon={<FemaleIcon color='secondary'/>}/>}
             label="Feminino" />
             <FormControlLabel 
             value="Masculino" 
-            control={<Radio disableRipple icon={<MaleIcon sx={{color: 'purple.text'}}/>} checkedIcon={<MaleIcon sx={{color: 'purple.dark'}}/>}/>} 
+            control={<Radio disableRipple icon={<MaleIcon sx={{color: 'purple.text'}}/>} checkedIcon={<MaleIcon color='secondary'/>}/>} 
             label="Masculino" />
         </RadioGroup>
     )}

@@ -65,7 +65,7 @@ function Contacts() {
         </MainContainer>
       </Grid>
       <Hidden mdDown>
-        <Grid item xl={3} lg={4} md={4} sx={{backgroundColor: 'purple.main'}} height={'100vh'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
+        <Grid item xl={3} lg={4} md={4} sx={{backgroundColor: 'secondary.light'}} height={'100vh'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
           <ContactForm setMyContacts={setMyContacts} setAlert={setAlert}/>
         </Grid>
       </Hidden>

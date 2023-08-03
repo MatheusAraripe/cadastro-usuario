@@ -52,7 +52,7 @@ function ContactForm({setMyContacts, setAlert}) {
 
   return (
     <form onSubmit={handleSubmit(dataSubmit)}>
-            <Grid container rowSpacing={4} color='purple.text' backgroundColor="purple.main" p={2} justifyContent={'center'} borderRadius={'8px'}>
+            <Grid container rowSpacing={4} color={'secondary.main'} backgroundColor="secondary.light" p={2} justifyContent={'center'} borderRadius={'8px'}>
                 <h2>Adicione um novo contato</h2>
                 <Grid xs={12} sm={12} item>
                     <InputText 
@@ -70,14 +70,14 @@ function ContactForm({setMyContacts, setAlert}) {
                     <InputDate name={'date'} control={control} value={null} label={'Data de Nascimento'} error={!!errors.date} helperText={errors.date?.message} />
                 </Grid>
                 <Grid xs={12}  item display={'flex'}  justifyContent={'start'} alignItems={'center'}>
-                    <FormLabel id="genderLable" sx={{color: 'purple.text', marginRight: '3px'}} color='secondary'>Sexo</FormLabel>
+                    <FormLabel id="genderLable" sx={{color: 'purple.dark', marginRight: '3px'}} color='secondary'>Sexo</FormLabel>
                     <InputRatio name={'gender'} value={"Feminino"} control={control} error={!!errors.gender} helperText={errors.gender?.message}/>
                 </Grid>
                 <Grid item xs={12} sm={12}>
                     <InputText name={'address'} control={control} lable={'Endereço'} error={!!errors.address} helperText={errors.address?.message} value={''}/>
                 </Grid>
                 <Grid item xs={12}>
-                    <Button type="submit" variant="text" fullWidth className={classes.btn} sx={{ color: 'purple.text'}}>Criar contato</Button>
+                    <Button type="submit" variant="text" fullWidth className={classes.btn} sx={{ color: 'purple.dark'}}>Criar contato</Button>
                 </Grid>
             </Grid>
     </form>

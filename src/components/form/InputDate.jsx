@@ -24,6 +24,7 @@ function InputDate({name, control, value, label, error, helperText}) {
             slotProps={{
                 textField:{
                     variant: 'outlined',
+                    color: 'secondary',
                     error: myErr,
                     helperText: helperTxt,
                 }

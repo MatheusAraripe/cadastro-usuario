@@ -12,7 +12,8 @@ function InputText({name, control, lable, error, helperText, value}) {
         <TextField
         {...field}
         label={lable}
-        variant="outlined" 
+        variant="outlined"
+        color='secondary' 
         fullWidth
         error={error}
         helperText={helperText}
