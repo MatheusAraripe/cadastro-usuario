@@ -1,13 +1,12 @@
-import { Avatar, Box, Button, Grid, Hidden} from '@mui/material'
+import { Avatar, Button, Grid, Hidden} from '@mui/material'
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
-import './contactsCard.css'
 import { ContactsContext } from '../../context/ContactsContext';
 import React,{useContext} from 'react'
 
 function ContactCard({item, setMyContacts, setContactModalOpen, setEditModalOpen, setItem}) {
 
- const {excludeContact, filterList, findContact} = useContext(ContactsContext);
+ const {excludeContact, filterList} = useContext(ContactsContext);
 
  const id = item.id
 
@@ -46,9 +45,9 @@ function ContactCard({item, setMyContacts, setContactModalOpen, setEditModalOpen
         </Hidden>
         <Grid item xs={6} sm={2} display={'flex'} justifyContent={'start'} alignItems={'center'}>
             {item.gender === 'Masculino'? 
-              <Avatar src='src\assets\maleAvatar.jpg' alt="Male Avatar" className='avatar-card' sx={{boxShadow: '6'}} />
+              <Avatar src='src\assets\maleAvatar.jpg' alt="Male Avatar"  sx={{boxShadow: '6'}} />
               :
-              <Avatar src='src\assets\femaleAvatar.jpg' alt="Male Avatar" className='avatar-card' sx={{boxShadow: '6'}} />
+              <Avatar src='src\assets\femaleAvatar.jpg' alt="Male Avatar"  sx={{boxShadow: '6'}} />
             }
         </Grid>
         <Grid item xs={6} sm={10} md={3} display={'flex'} justifyContent={'start'} alignItems={'center'}>
