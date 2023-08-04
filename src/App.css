@@ -25,7 +25,11 @@ h1{
 	font-size: xx-large;
 	color: rgb(44, 44, 44);
 }
-p, h2{
+h2{
+	font-family: 'Anton', sans-serif;
+	font-weight:lighter;
+}
+p{
 	font-family: 'Quicksand', sans-serif;
 }
 

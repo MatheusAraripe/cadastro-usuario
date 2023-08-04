@@ -9,6 +9,7 @@ import ScrollCards from "./scrollCards/ScrollCards";
 import SuccessAlert from "./alert/SuccessAlert";
 import ModalContacts from "./modalContacts/ModalContacts";
 import EditContactsModal from "./modalContacts/EditContactsModal";
+import CardInfo from "./cardInfo/cardInfo";
 
 export {
     MainContainer, 
@@ -22,4 +23,5 @@ export {
     SuccessAlert,
     ModalContacts,
     EditContactsModal,
+    CardInfo,
 };
