@@ -15,7 +15,38 @@ export const ContactsProvider = ({children}) => {
 
     const [contacts, setContacts] = useState(getContactsFromLs());
 
-   
+    // const nextBirthday = () => {
+    //     const contacts = getContactsFromLs();
+    //     const today = new Date();
+    //     let nearContact = null;
+    //     let nearDay = Infinity;
+    
+    //     contacts.forEach(contact => {
+    //         const contactDate = new Date(contact.date);
+    //         const contactBirthDate = new Date(today.getFullYear(), contactDate.getMonth(), contactDate.getDate());
+    
+    //         const difference = Math.abs(contactBirthDate - today);
+    
+    //         if (difference < nearDay) {
+    //             nearDay = difference;
+    //             nearContact = contact;
+    //         }
+    //     });
+    
+    //     if (nearContact) {
+    //         const nearContactDate = new Date(nearContact.date);
+    //         const nearContacThisYear = new Date(today.getFullYear(), nearContactDate.getMonth(), nearContactDate.getDate());
+    //         const age = nearContacThisYear.getFullYear() - nearContactDate.getFullYear();
+    
+    //         return {
+    //             name: nearContact.name,
+    //             age: age,
+    //         };
+    //     } else {
+    //         return null; // Retorna null se não houver pessoas no array
+    //     }
+    // };
+    
    // formato do objeto contact
    const newContact = (name, cpf, address, date, gender) => {
     return(

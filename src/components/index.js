@@ -10,6 +10,7 @@ import SuccessAlert from "./alert/SuccessAlert";
 import ModalContacts from "./modalContacts/ModalContacts";
 import EditContactsModal from "./modalContacts/EditContactsModal";
 import CardInfo from "./cardInfo/cardInfo";
+import CardInfoDate from "./cardInfo/CardInfoDate";
 
 export {
     MainContainer, 
@@ -24,4 +25,5 @@ export {
     ModalContacts,
     EditContactsModal,
     CardInfo,
+    CardInfoDate,
 };
