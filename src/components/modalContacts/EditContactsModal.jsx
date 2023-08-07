@@ -65,8 +65,10 @@ function EditContactsModal({item, setEditModalOpen, setMyContacts}) {
             <Grid item xs={12}>
               <InputDate name={'date'} control={control} value={date} label={'Data de Nascimento'} error={!!errors.date} helperText={errors.date?.message} />
             </Grid>
-            <Grid xs={12}  item display={'flex'}  justifyContent={'start'} alignItems={'center'}>
-              <FormLabel id="genderLable" sx={{color: 'purple.text', marginRight: '3px'}} color='secondary'>Sexo</FormLabel>
+            <Grid xs={12}  item display={'flex'}  justifyContent={'center'} alignItems={'center'}>
+              <FormLabel id="genderLable" sx={{color: 'purple.dark'}} color='secondary'>Sexo</FormLabel>
+            </Grid>
+            <Grid xs={12}  item display={'flex'}  justifyContent={'center'} alignItems={'center'}>
               <InputRatio name={'gender'} value={item.gender} control={control} error={!!errors.gender} helperText={errors.gender?.message}/>
             </Grid>
             <Grid item xs={12} sm={12}>
