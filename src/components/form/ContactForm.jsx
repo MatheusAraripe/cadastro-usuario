@@ -69,8 +69,8 @@ function ContactForm({setMyContacts, setAlert}) {
                 <Grid item xs={12}>
                     <InputDate name={'date'} control={control} value={null} label={'Data de Nascimento'} error={!!errors.date} helperText={errors.date?.message} />
                 </Grid>
-                <Grid xs={12}  item display={'flex'}  justifyContent={'start'} alignItems={'center'}>
-                    <FormLabel id="genderLable" sx={{color: 'purple.dark', marginRight: '3px'}} color='secondary'>Sexo</FormLabel>
+                <Grid xs={12}  item display={'flex'} justifyContent={'start'} alignItems={'center'}>
+                    <FormLabel id="genderLable" sx={{color: 'purple.dark', marginRight: '35px'}}>Sexo: </FormLabel>
                     <InputRatio name={'gender'} value={"Feminino"} control={control} error={!!errors.gender} helperText={errors.gender?.message}/>
                 </Grid>
                 <Grid item xs={12} sm={12}>
