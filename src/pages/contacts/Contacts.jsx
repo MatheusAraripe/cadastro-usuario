@@ -11,6 +11,7 @@ function Contacts() {
 
   //hook para alerta
   const [alert, setAlert] = useState(false)
+  const [deletAlert, setDeleteAlert] = useState(false);
 
   useEffect(() => {
     setMyContacts(getContactsFromLs())
@@ -35,7 +36,8 @@ function Contacts() {
     <ModalContacts item={item} setContactModalOpen={setContactModalOpen}/>
     }
 
-    {alert && <SuccessAlert/>}
+    {alert && <SuccessAlert message={"Contato adicionado com sucesso!"}/>}
+    {deletAlert && <SuccessAlert message={"Contato deletado com sucesso!"}/>}
 
     <Grid container justifyContent={'center'} alignItems={'center'}>
     {isOpen && <ContactFormResponsive setIsOpen={setIsOpen}/>}
@@ -57,6 +59,7 @@ function Contacts() {
                     setContactModalOpen={setContactModalOpen}
                     setEditModalOpen={setEditModalOpen}
                     setItem={setItem}
+                    setDeleteAlert={setDeleteAlert}
                     />
                   )
                 })}

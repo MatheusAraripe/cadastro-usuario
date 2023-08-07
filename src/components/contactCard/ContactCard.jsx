@@ -4,7 +4,7 @@ import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import { ContactsContext } from '../../context/ContactsContext';
 import React,{useContext} from 'react'
 
-function ContactCard({item, setMyContacts, setContactModalOpen, setEditModalOpen, setItem}) {
+function ContactCard({item, setMyContacts, setContactModalOpen, setEditModalOpen, setItem, setDeleteAlert}) {
 
  const {excludeContact, filterList} = useContext(ContactsContext);
 
@@ -17,6 +17,7 @@ function ContactCard({item, setMyContacts, setContactModalOpen, setEditModalOpen
   e.stopPropagation();
   // hook apenas para renderizar os contatos de maneira automática na tela
   setMyContacts(filterList(id));
+  setDeleteAlert(true)
   // exclui contato
   excludeContact(id);
  }

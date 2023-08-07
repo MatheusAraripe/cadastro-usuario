@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Alert } from '@mui/material'
 
-function SuccessAlert() {
+function SuccessAlert({message}) {
   
   const [isVisible, setIsVisible] = useState(true);
 
@@ -24,7 +24,7 @@ function SuccessAlert() {
           backgroundColor: 'green.main',
           color: 'white',
           }}>
-          Contato adicionado com sucesso!
+          {message}
         </Alert>
       )}
     </>
