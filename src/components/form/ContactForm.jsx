@@ -19,18 +19,36 @@ const useStyles = makeStyles({
 const validationSchema = yup.object().shape({
     name: yup.string().required('O nome é obrigatório'),
     cpf: yup.string().required('O CPF é obrigatório').min(11, 'CPF incompleto').max(11,'Formato inválido'),
-    address: yup.string().required('Endereço é obrigatório'),
+    cep: yup.string().required('CEP é obrigatório'),
+    street: yup.string().required('Rua é obrigatório'),
+    number: yup.number().required('Número é obrigatório'),
+    neighborhood: yup.string().required('Bairro é obrigatório'),
+    city: yup.string().required('CIadde é obrigatória'),
+    estate: yup.string().required('Estado é obrigatório'),
     date: yup.date().required('Data obrigatória'),
   
 });
 
 function ContactForm({setMyContacts, setAlert}) {
 
-  const { control, handleSubmit, reset, formState: { errors } } = useForm({
+  const { control, handleSubmit, setValue, setFocus, reset, formState: { errors } } = useForm({
       resolver: yupResolver(validationSchema)
     });
 
   const {addContact, newContact, getContactsFromLs} = useContext(ContactsContext);
+
+
+  const checkCep = (e) => {
+    const cep = e.target.value.replace(/\D/g, '');
+    fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res => res.json()).then(data => {
+      console.log(data);
+      setValue('street', data.logradouro);
+      setValue('neighborhood', data.bairro);
+      setValue('city', data.localidade);
+      setValue('estate', data.uf);
+      setFocus('number');
+    });
+  }
 
 
   const dataSubmit = (data) => {
@@ -38,10 +56,10 @@ function ContactForm({setMyContacts, setAlert}) {
 
     const LsContacts = getContactsFromLs();
     // hook apenas para renderizar os contatos de maneira automática na tela
-    setMyContacts([...LsContacts, newContact(data.name, data.cpf, data.address, formatDate, data.gender)]);
+    setMyContacts([...LsContacts, newContact(data.name, data.cpf, data.cep, formatDate, data.gender)]);
 
     // depois de renderizar na tela adiciona ao local storage
-    addContact(data.name, data.cpf, data.address, formatDate, data.gender)
+    addContact(data.name, data.cpf, data.cep, formatDate, data.gender)
     
     // mostra o alerta de sucesso
     setAlert(true)
@@ -52,7 +70,7 @@ function ContactForm({setMyContacts, setAlert}) {
 
   return (
     <form onSubmit={handleSubmit(dataSubmit)}>
-            <Grid container rowSpacing={4} color={'secondary.main'} backgroundColor="secondary.light" p={2} justifyContent={'center'} borderRadius={'8px'}>
+            <Grid container rowSpacing={2} color={'secondary.main'} backgroundColor="secondary.light" p={2} justifyContent={'center'} borderRadius={'8px'}>
                 <h2>Adicione um novo contato</h2>
                 <Grid xs={12} sm={12} item>
                     <InputText 
@@ -69,14 +87,30 @@ function ContactForm({setMyContacts, setAlert}) {
                 <Grid item xs={12}>
                     <InputDate name={'date'} control={control} value={null} label={'Data de Nascimento'} error={!!errors.date} helperText={errors.date?.message} />
                 </Grid>
-                <Grid xs={12}  item display={'flex'} justifyContent={'center'} alignItems={'center'}>
+                <Grid xs={12}  item display={'flex'} justifyContent={'left'} alignItems={'center'}>
                     <FormLabel id="genderLable" sx={{color: 'purple.dark', marginRight: '35px'}}>Sexo</FormLabel>
-                </Grid>
-                <Grid xs={12}  item display={'flex'} justifyContent={'center'} alignItems={'center'}>
                     <InputRatio name={'gender'} value={"Feminino"} control={control} error={!!errors.gender} helperText={errors.gender?.message}/>
                 </Grid>
+                <Grid item xs={12} sm={5}>
+                    <InputText name={'cep'} control={control} lable={'CEP'} error={!!errors.cep} helperText={errors.cep?.message} value={''} onBlur={checkCep}/>
+                </Grid>
+                <Grid item xs={12} sm={7}>
+                    <InputText name={'neighborhood'} control={control} lable={'Bairro'} error={!!errors.neighborhood} helperText={errors.neighborhood?.message} value={''}/>
+                </Grid>
                 <Grid item xs={12} sm={12}>
-                    <InputText name={'address'} control={control} lable={'Endereço'} error={!!errors.address} helperText={errors.address?.message} value={''}/>
+                    <InputText name={'street'} control={control} lable={'Rua'} error={!!errors.street} helperText={errors.street?.message} value={''}/>
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                    <InputText name={'number'} control={control} lable={'Número'} error={!!errors.number} helperText={errors.number?.message} value={''}/>
+                </Grid>
+                <Grid item xs={12} sm={8}>
+                    <InputText name={'complement'} control={control} lable={'Complemento'} error={!!errors.complement} helperText={errors.complement?.message} value={''}/>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <InputText name={'city'} control={control} lable={'Cidade'} error={!!errors.city} helperText={errors.city?.message} value={''}/>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <InputText name={'estate'} control={control} lable={'Estado'} error={!!errors.estate} helperText={errors.estate?.message} value={''}/>
                 </Grid>
                 <Grid item xs={12}>
                     <Button type="submit" variant="text" fullWidth className={classes.btn} sx={{ color: 'purple.dark'}}>Criar contato</Button>

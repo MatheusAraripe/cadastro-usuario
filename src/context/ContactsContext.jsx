@@ -48,13 +48,13 @@ export const ContactsProvider = ({children}) => {
     // };
     
    // formato do objeto contact
-   const newContact = (name, cpf, address, date, gender) => {
+   const newContact = (name, cpf, cep, date, gender) => {
     return(
         {
             id: uuidv4(),
             name,
             cpf,
-            address,
+            cep,
             date,
             gender
         }
@@ -62,9 +62,9 @@ export const ContactsProvider = ({children}) => {
    }
 
     // guarda contatos no localStorage
-    const addContact = (name, cpf, address, date, gender) =>{
+    const addContact = (name, cpf, cep, date, gender) =>{
 
-        contacts.push(newContact(name, cpf, address, date, gender))
+        contacts.push(newContact(name, cpf, cep, date, gender))
         localStorage.setItem('contacts',JSON.stringify(contacts));
     };
 

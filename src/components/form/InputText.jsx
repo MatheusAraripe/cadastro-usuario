@@ -2,7 +2,7 @@ import React from 'react'
 import { Controller } from 'react-hook-form'
 import { TextField } from '@mui/material'
 
-function InputText({name, control, lable, error, helperText, value}) {
+function InputText({name, control, lable, error, helperText, value, onBlur}) {
   return (
     <Controller
     name={name}
@@ -17,6 +17,7 @@ function InputText({name, control, lable, error, helperText, value}) {
         fullWidth
         error={error}
         helperText={helperText}
+        onBlur={onBlur}
         />
     )}
     />
