@@ -5,11 +5,10 @@ function CardInfo({info}) {
   return (
     <Grid 
     container 
-    sx={{backgroundColor: 'blue.main', color: 'blue.dark', marginRight: {xs: '0', md: '3rem'}}} 
+    sx={{backgroundColor: 'blue.main', color: 'blue.dark', marginRight: {xs: '0', md: '3rem'}, borderRadius: '5px'}} 
     rowSpacing={3} 
     marginTop={12} 
     p={2} 
-    borderRadius={2} 
     boxShadow={1} 
     maxWidth={'400px'}
     >

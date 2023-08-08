@@ -1,14 +1,19 @@
-import { Grid, Avatar} from '@mui/material'
+import { Grid } from '@mui/material'
+import CakeTwoToneIcon from '@mui/icons-material/CakeTwoTone';
 import React from 'react'
 
 function CardInfoDate() {
   return (
     <Grid 
     container
+    rowSpacing={1}
+    sx={{display: 'flex', justifyContent: 'left', alignItems: 'center', borderRadius: '5px'}} marginTop={4} boxShadow={2} maxWidth={'400px'} p={1}
     >
-        <Grid item xs={12} sx={{display: 'flex', justifyContent: 'left', alignItems: 'center'}} marginTop={4} >
-            <Avatar src='src\assets\femaleAvatar.jpg' alt="Male Avatar"  sx={{boxShadow: '6', marginRight: '1rem'}} />
-            <p>Maria Lúcia faz 32 anos dia 27/09/2023</p>
+        <Grid item xs={12} display={'flex'} justifyContent={'center'} alignItems={'center'}>
+          <CakeTwoToneIcon sx={{color: 'orange.dark'}} fontSize='large'/>
+        </Grid>
+        <Grid item xs={12} display={'flex'} justifyContent={'center'} alignItems={'center'}>
+            <p>Maria Lúcia faz 32 anos dia <strong>27/09/2023</strong></p>
         </Grid>
     </Grid>
   )
