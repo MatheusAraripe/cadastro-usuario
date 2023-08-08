@@ -1,7 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import ModalMain from '../modalMain/ModalMain'
 import ModalContactsMain from './ModalContactsMain'
-import { Box, Grid, Avatar, Button } from '@mui/material'
+import { Grid, Avatar, Button } from '@mui/material'
 
 function ModalContacts({item, setContactModalOpen}) {
 
@@ -32,8 +32,23 @@ function ModalContacts({item, setContactModalOpen}) {
             <Grid item md={4} xs={12}>
                 <p>Sexo: {item.gender}</p>
             </Grid>
-            <Grid item xs={12}>
-                <p>Endereço: {item.address}</p>
+            <Grid item xs={12} md={4}>
+                <p>CEP: {item.cep}</p>
+            </Grid>
+            <Grid item xs={12} md={8} >
+                <p>Rua: {item.street}</p>
+            </Grid>
+            <Grid item xs={12} md={4}>
+                <p>Número: {item.number}</p>
+            </Grid>
+            <Grid item xs={12} md={8}>
+                <p>Complemento: {item.complement}</p>
+            </Grid>
+            <Grid item xs={12} md={6}>
+                <p>Cidade: {item.city}</p>
+            </Grid>
+            <Grid item xs={12} md={6}>
+                <p>Estado: {item.estate}</p>
             </Grid>
         </ModalContactsMain>
     </ModalMain>

@@ -56,10 +56,10 @@ function ContactForm({setMyContacts, setAlert}) {
 
     const LsContacts = getContactsFromLs();
     // hook apenas para renderizar os contatos de maneira automática na tela
-    setMyContacts([...LsContacts, newContact(data.name, data.cpf, data.cep, formatDate, data.gender)]);
+    setMyContacts([...LsContacts, newContact(data.name, data.cpf, data.cep,data.street, data.number, data.neighborhood, data.city, data.estate, data.complement,formatDate, data.gender)]);
 
     // depois de renderizar na tela adiciona ao local storage
-    addContact(data.name, data.cpf, data.cep, formatDate, data.gender)
+    addContact(data.name, data.cpf, data.cep, data.street, data.number, data.neighborhood, data.city, data.estate, data.complement, formatDate, data.gender)
     
     // mostra o alerta de sucesso
     setAlert(true)

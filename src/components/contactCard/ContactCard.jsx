@@ -10,9 +10,6 @@ function ContactCard({item, setMyContacts, setContactModalOpen, setEditModalOpen
 
  const id = item.id
 
- // localiza o contato
-//  const contact = findContact(id);
-
  const deleteContact = (e) => {
   e.stopPropagation();
   // hook apenas para renderizar os contatos de maneira automática na tela
@@ -51,11 +48,14 @@ function ContactCard({item, setMyContacts, setContactModalOpen, setEditModalOpen
               <Avatar src='src\assets\femaleAvatar.jpg' alt="Male Avatar"  sx={{boxShadow: '6'}} />
             }
         </Grid>
-        <Grid item xs={6} sm={10} md={3} display={'flex'} justifyContent={'start'} alignItems={'center'}>
+        <Grid item xs={6} sm={10} md={3} display={'flex'} justifyContent={{xs: 'end', md: 'start'}} alignItems={'center'}>
           <p>CPF: {item.cpf}</p>
         </Grid>
-        <Grid item xs={12} sm={12} md={7} display={'flex'} justifyContent={'start'} alignItems={'center'}>
-          <p>Endereço: {item.address}</p>
+        <Grid item xs={9} sm={9} md={4} display={'flex'} justifyContent={'start'} alignItems={'center'}>
+          <p>Cidade: {item.city}</p>
+        </Grid>
+        <Grid item xs={3} sm={3} md={3} display={'flex'} justifyContent={{xs: 'center', md: 'start'}} alignItems={'center'}>
+          <p>Estado: {item.estate}</p>
         </Grid>
         <Hidden smUp>
           <Grid item xs={12} display={'flex'} justifyContent={'space-between'} alignItems={'center'} py={1}>
