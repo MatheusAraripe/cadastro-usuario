@@ -24,7 +24,7 @@ function SuccessAlert({message}) {
           backgroundColor: 'green.main',
           color: 'white',
           }}>
-          {message}
+          Contato <strong>{message}</strong> com sucesso!
         </Alert>
       )}
     </>

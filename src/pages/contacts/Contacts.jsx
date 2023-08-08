@@ -36,8 +36,8 @@ function Contacts() {
     <ModalContacts item={item} setContactModalOpen={setContactModalOpen}/>
     }
 
-    {alert && <SuccessAlert message={"Contato adicionado com sucesso!"}/>}
-    {deletAlert && <SuccessAlert message={"Contato deletado com sucesso!"}/>}
+    {alert && <SuccessAlert message={"adicionado"}/>}
+    {deletAlert && <SuccessAlert message={"deletado"}/>}
 
     <Grid container justifyContent={'center'} alignItems={'center'}>
     {isOpen && <ContactFormResponsive setIsOpen={setIsOpen}/>}
