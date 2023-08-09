@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react'
 import { ContactsContext } from '../../context/ContactsContext';
 import { Box, Grid, Hidden} from '@mui/material'
-import { ContactCard, MainContainer, ContactForm, ButtonFormResponsive, ContactFormResponsive, ScrollCards, SuccessAlert, ModalContacts, EditContactsModal} from '../../components'
+import { ContactCard, MainContainer, ContactForm, ButtonFormResponsive, ContactFormResponsive, ScrollCards, SuccessAlert, ModalContacts, EditContactsModal, InfoAlert} from '../../components'
 
 function Contacts() {
 
@@ -12,6 +12,7 @@ function Contacts() {
   //hook para alerta
   const [alert, setAlert] = useState(false)
   const [deletAlert, setDeleteAlert] = useState(false);
+  const [infoAlert, setInfoAlert] = useState(false);
 
   useEffect(() => {
     setMyContacts(getContactsFromLs())
@@ -31,13 +32,14 @@ function Contacts() {
 
   return (
     <>
-    {editModalOpen && <EditContactsModal setEditModalOpen={setEditModalOpen} item={item} setMyContacts={setMyContacts}/>}
+    {editModalOpen && <EditContactsModal setEditModalOpen={setEditModalOpen} item={item} setMyContacts={setMyContacts} setInfoAlert={setInfoAlert}/>}
     {contactModalOpen && 
     <ModalContacts item={item} setContactModalOpen={setContactModalOpen}/>
     }
 
     {alert && <SuccessAlert message={"adicionado"}/>}
     {deletAlert && <SuccessAlert message={"deletado"}/>}
+    {infoAlert && <InfoAlert />}
 
     <Grid container justifyContent={'center'} alignItems={'center'}>
     {isOpen && <ContactFormResponsive setIsOpen={setIsOpen}/>}

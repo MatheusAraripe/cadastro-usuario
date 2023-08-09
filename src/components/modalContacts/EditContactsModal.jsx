@@ -20,7 +20,7 @@ const validationSchema = yup.object().shape({
 });
 
 
-function EditContactsModal({item, setEditModalOpen, setMyContacts}) {
+function EditContactsModal({item, setEditModalOpen, setMyContacts, setInfoAlert}) {
 
   const { control, handleSubmit, setValue, setFocus, formState: { errors } } = useForm({
     resolver: yupResolver(validationSchema)
@@ -59,6 +59,7 @@ function EditContactsModal({item, setEditModalOpen, setMyContacts}) {
     // salvando no LocalStorage
     editContact(item.id, data.name, data.cpf, data.cep,data.street, data.number, data.neighborhood, data.city, data.estate, data.complement,formatDate, data.gender);
     setEditModalOpen(false);
+    setInfoAlert(true);
   }
 
   return (

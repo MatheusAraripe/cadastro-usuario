@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Alert } from '@mui/material'
 
-function SuccessAlert({message}) {
+function InfoAlert() {
   
   const [isVisible, setIsVisible] = useState(true);
 
@@ -15,21 +15,19 @@ function SuccessAlert({message}) {
   return (
     <>
       {isVisible && (
-        <Alert severity="success" variant="filled" sx={{
+        <Alert severity="info" sx={{
           width: {xs: '250px', sm: '300px', md: '500px'},
           position: 'absolute',
           zIndex: '99',
           right: '10px',
           top: '20px',
-          backgroundColor: 'green.main',
-          color: 'white',
           border: '1px solid black'
           }}>
-          Contato <strong>{message}</strong> com sucesso!
+          Você editou as informações de um contato
         </Alert>
       )}
     </>
   )
 }
 
-export default SuccessAlert
+export default InfoAlert

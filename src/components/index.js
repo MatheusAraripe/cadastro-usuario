@@ -7,6 +7,7 @@ import ButtonFormResponsive from "./form/ButtonFormResponsive";
 import ContactFormResponsive from "./form/ContactFormResponsive";
 import ScrollCards from "./scrollCards/ScrollCards";
 import SuccessAlert from "./alert/SuccessAlert";
+import InfoAlert from "./alert/InfoAlert";
 import ModalContacts from "./modalContacts/ModalContacts";
 import EditContactsModal from "./modalContacts/EditContactsModal";
 import CardInfo from "./cardInfo/cardInfo";
@@ -26,4 +27,5 @@ export {
     EditContactsModal,
     CardInfo,
     CardInfoDate,
+    InfoAlert,
 };
