@@ -53,11 +53,11 @@ function EditContactsModal({item, setEditModalOpen, setMyContacts}) {
     const contactArry = getContactsFromLs();
     const contact = contactArry.find(user => user.id === item.id);
     const index = contactArry.indexOf(contact);
-    contactArry[index] = newContact(data.name, data.cpf, data.address, formatDate, data.gender)
+    contactArry[index] = newContact(data.name, data.cpf, data.cep,data.street, data.number, data.neighborhood, data.city, data.estate, data.complement,formatDate, data.gender)
     setMyContacts(contactArry);
 
     // salvando no LocalStorage
-    editContact(item.id, data.name, data.cpf, data.address, formatDate, data.gender);
+    editContact(item.id, data.name, data.cpf, data.cep,data.street, data.number, data.neighborhood, data.city, data.estate, data.complement,formatDate, data.gender);
     setEditModalOpen(false);
   }
 
@@ -71,35 +71,37 @@ function EditContactsModal({item, setEditModalOpen, setMyContacts}) {
             <Grid item xs={12}>
               <InputText name={'name'} control={control} lable={'Nome completo'} error={!!errors.name} helperText={errors.name?.message} value={item.name}/>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={6}>
               <InputText name={'cpf'} control={control} lable={'CPF'} error={!!errors.cpf} helperText={errors.cpf?.message} value={item.cpf}/>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={6}>
               <InputDate name={'date'} control={control} value={date} label={'Data de Nascimento'} error={!!errors.date} helperText={errors.date?.message} />
             </Grid>
-            <Grid xs={12}  item display={'flex'}  justifyContent={'left'} alignItems={'center'}>
+            <Grid item xs={12} sm={2} display={'flex'}  justifyContent={{sm: 'start', xs: 'center'}} alignItems={'center'}>
               <FormLabel id="genderLable" sx={{color: 'purple.dark', marginRight: '35px'}} color='secondary'>Sexo</FormLabel>
+            </Grid>
+            <Grid xs={12} sm={10} item display={'flex'} justifyContent={{sm: 'left', xs: 'center'}} alignItems={'center'}>
               <InputRatio name={'gender'} value={item.gender} control={control} error={!!errors.gender} helperText={errors.gender?.message}/>
             </Grid>
-            <Grid item xs={12} sm={5}>
+            <Grid item xs={5} sm={5}>
                 <InputText name={'cep'} control={control} lable={'CEP'} error={!!errors.cep} helperText={errors.cep?.message} value={item.cep} onBlur={checkCep}/>
             </Grid>
-            <Grid item xs={12} sm={7}>
+            <Grid item xs={7} sm={7}>
                 <InputText name={'neighborhood'} control={control} lable={'Bairro'} error={!!errors.neighborhood} helperText={errors.neighborhood?.message} value={item.neighborhood}/>
             </Grid>
             <Grid item xs={12} sm={12}>
                 <InputText name={'street'} control={control} lable={'Rua'} error={!!errors.street} helperText={errors.street?.message} value={item.street}/>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={4} sm={4}>
                 <InputText name={'number'} control={control} lable={'Número'} error={!!errors.number} helperText={errors.number?.message} value={item.number}/>
             </Grid>
-            <Grid item xs={12} sm={8}>
+            <Grid item xs={8} sm={8}>
                 <InputText name={'complement'} control={control} lable={'Complemento'} error={!!errors.complement} helperText={errors.complement?.message} value={item.complement}/>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={9} sm={6}>
                 <InputText name={'city'} control={control} lable={'Cidade'} error={!!errors.city} helperText={errors.city?.message} value={item.city}/>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={3} sm={6}>
                 <InputText name={'estate'} control={control} lable={'Estado'} error={!!errors.estate} helperText={errors.estate?.message} value={item.estate}/>
             </Grid>
             <Grid item xs={12}>
