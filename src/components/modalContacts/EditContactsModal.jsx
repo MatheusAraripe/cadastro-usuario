@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import { ContactsContext } from '../../context/ContactsContext';
 import { Button, Grid, FormLabel} from '@mui/material';
+import CancelPresentationTwoToneIcon from '@mui/icons-material/CancelPresentationTwoTone';
 import ModalMain from '../modalMain/ModalMain'
 import ModalContactsMain from './ModalContactsMain'
 import { useForm } from "react-hook-form";
@@ -67,7 +68,7 @@ function EditContactsModal({item, setEditModalOpen, setMyContacts, setInfoAlert}
       <form onSubmit={handleSubmit(handleEdit)}>
         <ModalContactsMain>
             <Grid item xs={12} display={'flex'} justifyContent={'right'} alignItems={'center'}>
-              <Button onClick={closeModal}>X</Button>
+              <Button onClick={closeModal}><CancelPresentationTwoToneIcon color='error'/></Button>
             </Grid>
             <Grid item xs={12}>
               <InputText name={'name'} control={control} lable={'Nome completo'} error={!!errors.name} helperText={errors.name?.message} value={item.name}/>

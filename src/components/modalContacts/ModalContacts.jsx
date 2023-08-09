@@ -2,6 +2,7 @@ import React from 'react'
 import ModalMain from '../modalMain/ModalMain'
 import ModalContactsMain from './ModalContactsMain'
 import { Grid, Avatar, Button } from '@mui/material'
+import CancelPresentationTwoToneIcon from '@mui/icons-material/CancelPresentationTwoTone';
 
 function ModalContacts({item, setContactModalOpen}) {
 
@@ -21,7 +22,7 @@ function ModalContacts({item, setContactModalOpen}) {
             </Grid>
             <Grid item xs={10} md={10} display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
                 <h2>{item.name}</h2>
-                <Button onClick={closeModal} >X</Button>
+                <Button onClick={closeModal} ><CancelPresentationTwoToneIcon color='error'/></Button>
             </Grid>
             <Grid item md={4} xs={12}>
                 <p>CPF: {item.cpf}</p>

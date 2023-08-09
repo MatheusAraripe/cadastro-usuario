@@ -1,22 +1,22 @@
 .scrollContainer{
     max-height:465px;
     overflow-y: scroll;
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #ccc;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+    border-radius: 5px;
     padding: 1rem;
 }
 
 .scrollContainer::-webkit-scrollbar {
-    width: 10px;             /* width of the entire scrollbar */
+    width: 10px;             
 }
   
 .scrollContainer::-webkit-scrollbar-track {
-    background: #F0F3FF;        /* color of the tracking area */
+    background: #F0F3FF;       
     border-radius: 10px; 
 }
 
 .scrollContainer::-webkit-scrollbar-thumb {
-    background-color: #9C9FD5;    /* color of the scroll thumb */
-    border-radius: 20px;       /* roundness of the scroll thumb */
-    border: 3px solid #F0F3FF;  /* creates padding around scroll thumb */
+    background-color: #9C9FD5;    
+    border-radius: 20px;       
+    border: 3px solid #F0F3FF;  
 }
