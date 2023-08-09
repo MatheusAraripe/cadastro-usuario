@@ -70,7 +70,7 @@ function ContactForm({setMyContacts, setAlert}) {
 
   return (
     <form onSubmit={handleSubmit(dataSubmit)}>
-            <Grid container rowSpacing={2} color={'secondary.main'} backgroundColor="secondary.light" p={2} justifyContent={'center'} borderRadius={'8px'}>
+            <Grid container rowSpacing={2} columnSpacing={1} color={'secondary.main'} p={2} justifyContent={'center'}>
                 <h2>Adicione um novo contato</h2>
                 <Grid xs={12} sm={12} item>
                     <InputText 
@@ -81,35 +81,35 @@ function ContactForm({setMyContacts, setAlert}) {
                     helperText={errors.name?.message} 
                     value={''}/>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={6} sm={12}>
                     <InputText name={'cpf'} control={control} lable={'CPF'} error={!!errors.cpf} helperText={errors.cpf?.message} value={''}/>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={6} sm={12}>
                     <InputDate name={'date'} control={control} value={null} label={'Data de Nascimento'} error={!!errors.date} helperText={errors.date?.message} />
                 </Grid>
                 <Grid xs={12}  item display={'flex'} justifyContent={'left'} alignItems={'center'}>
-                    <FormLabel id="genderLable" sx={{color: 'purple.dark', marginRight: '35px'}}>Sexo</FormLabel>
+                    <FormLabel id="genderLable" sx={{color: 'purple.dark', marginRight: '50px'}}>Sexo</FormLabel>
                     <InputRatio name={'gender'} value={"Feminino"} control={control} error={!!errors.gender} helperText={errors.gender?.message}/>
                 </Grid>
-                <Grid item xs={12} sm={5}>
+                <Grid item xs={5} sm={5}>
                     <InputText name={'cep'} control={control} lable={'CEP'} error={!!errors.cep} helperText={errors.cep?.message} value={''} onBlur={checkCep}/>
                 </Grid>
-                <Grid item xs={12} sm={7}>
+                <Grid item xs={7} sm={7}>
                     <InputText name={'neighborhood'} control={control} lable={'Bairro'} error={!!errors.neighborhood} helperText={errors.neighborhood?.message} value={''}/>
                 </Grid>
                 <Grid item xs={12} sm={12}>
                     <InputText name={'street'} control={control} lable={'Rua'} error={!!errors.street} helperText={errors.street?.message} value={''}/>
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={4} sm={4}>
                     <InputText name={'number'} control={control} lable={'Número'} error={!!errors.number} helperText={errors.number?.message} value={''}/>
                 </Grid>
-                <Grid item xs={12} sm={8}>
+                <Grid item xs={8} sm={8}>
                     <InputText name={'complement'} control={control} lable={'Complemento'} error={!!errors.complement} helperText={errors.complement?.message} value={''}/>
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={9} sm={6}>
                     <InputText name={'city'} control={control} lable={'Cidade'} error={!!errors.city} helperText={errors.city?.message} value={''}/>
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={3} sm={6}>
                     <InputText name={'estate'} control={control} lable={'Estado'} error={!!errors.estate} helperText={errors.estate?.message} value={''}/>
                 </Grid>
                 <Grid item xs={12}>

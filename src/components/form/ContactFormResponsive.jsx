@@ -13,11 +13,15 @@ function ContactFormResponsive({setIsOpen}) {
             </IconButton>
         </Box>
 
-        <Box sx={{
+        <Box
+        boxShadow={2}
+        sx={{
         margin: '1.5rem',
         display: 'flex', 
         justifyContent: 'center', 
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: 'purple.main',
+        borderRadius: '5px',
         }}>
             <ContactForm/>
         </Box>
