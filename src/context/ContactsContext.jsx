@@ -114,8 +114,14 @@ export const ContactsProvider = ({children}) => {
         localStorage.setItem('contacts', JSON.stringify(contactArry));
     }
 
+    const searchContact = (name) => {
+        const contactArry = getContactsFromLs();
+        const filterContactsByName = contactArry.filter(item => item.name.toLowerCase().includes(name.toLowerCase()));
+        return filterContactsByName;
+    }
 
-    return <ContactsContext.Provider value={{addContact, getContactsFromLs, newContact, excludeContact, filterList, findContact, editContact}}>
+
+    return <ContactsContext.Provider value={{addContact, getContactsFromLs, newContact, excludeContact, filterList, findContact, editContact, searchContact}}>
         {children}
     </ContactsContext.Provider>
 };

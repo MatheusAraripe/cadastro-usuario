@@ -51,7 +51,7 @@ function Contacts() {
         </Hidden>
         <MainContainer title={"Meus Contatos"}>
             <Box my={15} >
-              <SearchBar/>
+              <SearchBar setContactsList={setMyContacts}/>
               <ScrollCards>
                 {myContacts.map((item, index) => {
                   return(
