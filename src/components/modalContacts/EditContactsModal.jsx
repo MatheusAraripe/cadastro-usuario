@@ -22,13 +22,25 @@ const validationSchema = yup.object().shape({
 
 function EditContactsModal({item, setEditModalOpen, setMyContacts}) {
 
-  const { control, handleSubmit, formState: { errors } } = useForm({
+  const { control, handleSubmit, setValue, setFocus, formState: { errors } } = useForm({
     resolver: yupResolver(validationSchema)
   });
 
   const {editContact, getContactsFromLs, newContact} = useContext(ContactsContext);
 
   const date = dayjs(item.date)
+
+  const checkCep = (e) => {
+    const cep = e.target.value.replace(/\D/g, '');
+    fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res => res.json()).then(data => {
+      console.log(data);
+      setValue('street', data.logradouro);
+      setValue('neighborhood', data.bairro);
+      setValue('city', data.localidade);
+      setValue('estate', data.uf);
+      setFocus('number');
+    });
+  }
 
   const closeModal = () => {
     setEditModalOpen(false);
@@ -65,14 +77,30 @@ function EditContactsModal({item, setEditModalOpen, setMyContacts}) {
             <Grid item xs={12}>
               <InputDate name={'date'} control={control} value={date} label={'Data de Nascimento'} error={!!errors.date} helperText={errors.date?.message} />
             </Grid>
-            <Grid xs={12}  item display={'flex'}  justifyContent={'center'} alignItems={'center'}>
-              <FormLabel id="genderLable" sx={{color: 'purple.dark'}} color='secondary'>Sexo</FormLabel>
-            </Grid>
-            <Grid xs={12}  item display={'flex'}  justifyContent={'center'} alignItems={'center'}>
+            <Grid xs={12}  item display={'flex'}  justifyContent={'left'} alignItems={'center'}>
+              <FormLabel id="genderLable" sx={{color: 'purple.dark', marginRight: '35px'}} color='secondary'>Sexo</FormLabel>
               <InputRatio name={'gender'} value={item.gender} control={control} error={!!errors.gender} helperText={errors.gender?.message}/>
             </Grid>
+            <Grid item xs={12} sm={5}>
+                <InputText name={'cep'} control={control} lable={'CEP'} error={!!errors.cep} helperText={errors.cep?.message} value={item.cep} onBlur={checkCep}/>
+            </Grid>
+            <Grid item xs={12} sm={7}>
+                <InputText name={'neighborhood'} control={control} lable={'Bairro'} error={!!errors.neighborhood} helperText={errors.neighborhood?.message} value={item.neighborhood}/>
+            </Grid>
             <Grid item xs={12} sm={12}>
-              <InputText name={'address'} control={control} lable={'Endereço'} error={!!errors.address} helperText={errors.address?.message} value={item.address}/>
+                <InputText name={'street'} control={control} lable={'Rua'} error={!!errors.street} helperText={errors.street?.message} value={item.street}/>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+                <InputText name={'number'} control={control} lable={'Número'} error={!!errors.number} helperText={errors.number?.message} value={item.number}/>
+            </Grid>
+            <Grid item xs={12} sm={8}>
+                <InputText name={'complement'} control={control} lable={'Complemento'} error={!!errors.complement} helperText={errors.complement?.message} value={item.complement}/>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+                <InputText name={'city'} control={control} lable={'Cidade'} error={!!errors.city} helperText={errors.city?.message} value={item.city}/>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+                <InputText name={'estate'} control={control} lable={'Estado'} error={!!errors.estate} helperText={errors.estate?.message} value={item.estate}/>
             </Grid>
             <Grid item xs={12}>
               <Button type="submit" variant="text" fullWidth onClick={handleEdit}>Confirmar</Button>
