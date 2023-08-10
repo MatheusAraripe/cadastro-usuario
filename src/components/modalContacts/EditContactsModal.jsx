@@ -29,7 +29,7 @@ function EditContactsModal({item, setEditModalOpen, setMyContacts, setInfoAlert}
 
   const {editContact, getContactsFromLs, newContact} = useContext(ContactsContext);
 
-  const date = dayjs(item.date)
+  const date = dayjs(item.date, 'DD/MM/YYYY');
 
   const checkCep = (e) => {
     const cep = e.target.value.replace(/\D/g, '');
