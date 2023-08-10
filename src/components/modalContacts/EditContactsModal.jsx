@@ -15,8 +15,13 @@ import {InputText, InputRatio, InputDate} from '../form/index'
 const validationSchema = yup.object().shape({
   name: yup.string().required('O nome é obrigatório'),
   cpf: yup.string().required('O CPF é obrigatório').min(11, 'CPF incompleto').max(11,'CPF maior que o permitido'),
-  address: yup.string().required('Endereço é obrigatório'),
   date: yup.date().required('Data obrigatória'),
+  cep: yup.string().required('CEP é obrigatório'),
+  street: yup.string().required('Rua é obrigatório'),
+  number: yup.number().required('Número é obrigatório'),
+  neighborhood: yup.string().required('Bairro é obrigatório'),
+  city: yup.string().required('CIadde é obrigatória'),
+  estate: yup.string().required('Estado é obrigatório'),
 
 });
 
@@ -48,13 +53,14 @@ function EditContactsModal({item, setEditModalOpen, setMyContacts, setInfoAlert}
   }
 
   const handleEdit = (data) => {
+    console.log("o nome", data.name);
     const formatDate = format(new Date(data.date), 'dd/MM/yyyy');
 
     // mudando o estado do meu arry de contatos para renderizar sem  precisar recarregar a página
     const contactArry = getContactsFromLs();
     const contact = contactArry.find(user => user.id === item.id);
     const index = contactArry.indexOf(contact);
-    contactArry[index] = newContact(data.name, data.cpf, data.cep,data.street, data.number, data.neighborhood, data.city, data.estate, data.complement,formatDate, data.gender)
+    contactArry[index] = newContact(data.name, data.cpf, data.cep, data.street, data.number, data.neighborhood, data.city, data.estate, data.complement, formatDate, data.gender)
     setMyContacts(contactArry);
 
     // salvando no LocalStorage

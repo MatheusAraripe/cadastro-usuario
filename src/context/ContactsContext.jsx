@@ -94,7 +94,7 @@ export const ContactsProvider = ({children}) => {
     }
 
 
-    const editContact = (id, name, cpf, address, date, gender) => {
+    const editContact = (id, name, cpf, cep, street, number, neighborhood, city, estate, complement,date, gender) => {
         const contactArry = getContactsFromLs();
         const contact = contactArry.find(user => user.id === id);
         const index = contactArry.indexOf(contact);
@@ -103,7 +103,13 @@ export const ContactsProvider = ({children}) => {
             id,
             name,
             cpf, 
-            address, 
+            cep, 
+            street, 
+            number, 
+            neighborhood, 
+            city, 
+            estate, 
+            complement,
             date, 
             gender
         }

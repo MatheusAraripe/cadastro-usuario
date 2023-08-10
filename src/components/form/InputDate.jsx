@@ -5,7 +5,7 @@ import { DatePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 function InputDate({name, control, value, label, error, helperText}) {
-    
+
   const myErr = error
   const helperTxt = helperText
 
@@ -18,7 +18,7 @@ function InputDate({name, control, value, label, error, helperText}) {
       render={({field}) => (
             <DatePicker
             {...field}
-            label={label} 
+            label={label}
             sx={{width: '100%'}}
             format='DD/MM/YYYY'
             slotProps={{
