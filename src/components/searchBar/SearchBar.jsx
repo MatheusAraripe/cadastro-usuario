@@ -2,14 +2,14 @@ import { Grid, TextField } from '@mui/material'
 import { ContactsContext } from '../../context/ContactsContext';
 import React, { useContext, useState } from 'react'
 
-function SearchBar({setContactsList}) {
+function SearchBar({setMyContacts}) {
   
   const {searchContact} = useContext(ContactsContext)
 
   const [name, setName] = useState('');
   const handleChange = (e) =>{
     setName(e.target.value);
-    setContactsList(searchContact(e.target.value));
+    setMyContacts(searchContact(e.target.value));
   };
 
 
