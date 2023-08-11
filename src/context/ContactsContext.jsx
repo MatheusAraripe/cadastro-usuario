@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const ContactsContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 export const ContactsProvider = ({children}) => {
 
     const getContactsFromLs = () => {
@@ -15,38 +16,42 @@ export const ContactsProvider = ({children}) => {
 
     const [contacts, setContacts] = useState(getContactsFromLs());
 
-    // const nextBirthday = () => {
-    //     const contacts = getContactsFromLs();
-    //     const today = new Date();
-    //     let nearContact = null;
-    //     let nearDay = Infinity;
-    
-    //     contacts.forEach(contact => {
-    //         const contactDate = new Date(contact.date);
-    //         const contactBirthDate = new Date(today.getFullYear(), contactDate.getMonth(), contactDate.getDate());
-    
-    //         const difference = Math.abs(contactBirthDate - today);
-    
-    //         if (difference < nearDay) {
-    //             nearDay = difference;
-    //             nearContact = contact;
-    //         }
-    //     });
-    
-    //     if (nearContact) {
-    //         const nearContactDate = new Date(nearContact.date);
-    //         const nearContacThisYear = new Date(today.getFullYear(), nearContactDate.getMonth(), nearContactDate.getDate());
-    //         const age = nearContacThisYear.getFullYear() - nearContactDate.getFullYear();
-    
-    //         return {
-    //             name: nearContact.name,
-    //             age: age,
-    //         };
-    //     } else {
-    //         return null; // Retorna null se não houver pessoas no array
-    //     }
-    // };
-    
+    const nextBirthday = () => {
+      const contacts = getContactsFromLs();
+      const today = new Date();
+      let nearContact = null;
+      let nearDay = Infinity;
+
+      contacts.forEach(contact => {
+             const dateArry = contact.date.split('/');
+             const contactDate = new Date(`${dateArry[1]}/${dateArry[0]}/${dateArry[2]}`);
+             const contactBirthDate = new Date(today.getFullYear(), contactDate.getMonth(), contactDate.getDate());
+
+             const difference = Math.abs(contactBirthDate - today);
+
+             if (difference < nearDay) {
+                 nearDay = difference;
+                 nearContact = contact;
+             }
+         });
+
+
+
+         if (nearContact) {
+             const nearContactDate = new Date(`${nearContact.date.split("/")[1]}/${nearContact.date.split("/")[0]}/${nearContact.date.split("/")[2]}`);
+             const nearContacThisYear = new Date(today.getFullYear(), nearContactDate.getMonth(), nearContactDate.getDate());
+             const age = nearContacThisYear.getFullYear() - nearContactDate.getFullYear();
+
+             return {
+                 name: nearContact.name,
+                 date: `${nearContact.date.split("/")[0]}/${nearContact.date.split("/")[1]}`,
+                 age: age,
+             };
+         } else {
+             return null; // Retorna null se não houver pessoas no array
+         }
+    };
+
    // formato do objeto contact
    const newContact = (name, cpf, cep, street, number, neighborhood, city, estate, complement, date, gender) => {
     return(
@@ -55,11 +60,11 @@ export const ContactsProvider = ({children}) => {
             name,
             cpf,
             cep,
-            street, 
-            number, 
-            neighborhood, 
-            city, 
-            estate, 
+            street,
+            number,
+            neighborhood,
+            city,
+            estate,
             complement,
             date,
             gender
@@ -102,15 +107,15 @@ export const ContactsProvider = ({children}) => {
         const newEditConatc = {
             id,
             name,
-            cpf, 
-            cep, 
-            street, 
-            number, 
-            neighborhood, 
-            city, 
-            estate, 
+            cpf,
+            cep,
+            street,
+            number,
+            neighborhood,
+            city,
+            estate,
             complement,
-            date, 
+            date,
             gender
         }
 
@@ -127,7 +132,7 @@ export const ContactsProvider = ({children}) => {
     }
 
 
-    return <ContactsContext.Provider value={{addContact, getContactsFromLs, newContact, excludeContact, filterList, findContact, editContact, searchContact}}>
+    return <ContactsContext.Provider value={{addContact, getContactsFromLs, newContact, excludeContact, filterList, findContact, editContact, searchContact, nextBirthday}}>
         {children}
     </ContactsContext.Provider>
 };

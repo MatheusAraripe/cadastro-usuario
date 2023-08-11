@@ -1,9 +1,14 @@
 import { Grid } from '@mui/material'
 import CakeTwoToneIcon from '@mui/icons-material/CakeTwoTone';
+import { ContactsContext } from '../../context/ContactsContext';
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
+import React, { useContext } from 'react'
 
 function CardInfoDate() {
+
+  const {nextBirthday} = useContext(ContactsContext);
+
+  const contact = nextBirthday()
   return (
     <Grid
     container
@@ -14,7 +19,7 @@ function CardInfoDate() {
           <CakeTwoToneIcon sx={{color: 'orange.dark'}} fontSize='large'/>
         </Grid>
         <Grid item xs={12} display={'flex'} justifyContent={'center'} alignItems={'center'}>
-            <p>Maria Lúcia faz 32 anos dia <strong>27/09/2023</strong></p>
+            <p>{contact.name} faz <strong>{contact.age}</strong> anos no dia <strong>{contact.date}</strong></p>
         </Grid>
     </Grid>
   )
