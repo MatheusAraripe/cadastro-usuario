@@ -10,17 +10,17 @@ import SuccessAlert from "./alert/SuccessAlert";
 import InfoAlert from "./alert/InfoAlert";
 import ModalContacts from "./modalContacts/ModalContacts";
 import EditContactsModal from "./modalContacts/EditContactsModal";
-import CardInfo from "./cardInfo/cardInfo";
+import CardInfo from "./cardInfo/CardInfo";
 import CardInfoDate from "./cardInfo/CardInfoDate";
 import SearchBar from "./searchBar/SearchBar";
 
 export {
-    MainContainer, 
-    Navbar, 
-    ContactCard, 
-    ResponsiveNavbar, 
-    ContactForm, 
-    ButtonFormResponsive, 
+    MainContainer,
+    Navbar,
+    ContactCard,
+    ResponsiveNavbar,
+    ContactForm,
+    ButtonFormResponsive,
     ContactFormResponsive,
     ScrollCards,
     SuccessAlert,

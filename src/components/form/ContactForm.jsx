@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { ContactsContext } from '../../context/ContactsContext';
 import { makeStyles } from '@mui/styles';
 import format from 'date-fns/format';
+// eslint-disable-next-line no-unused-vars
 import React, {useContext} from 'react'
 
 const useStyles = makeStyles({
@@ -26,9 +27,10 @@ const validationSchema = yup.object().shape({
     city: yup.string().required('CIadde é obrigatória'),
     estate: yup.string().required('Estado é obrigatório'),
     date: yup.date().required('Data obrigatória'),
-  
+
 });
 
+// eslint-disable-next-line react/prop-types
 function ContactForm({setMyContacts, setAlert}) {
 
   const { control, handleSubmit, setValue, setFocus, reset, formState: { errors } } = useForm({
@@ -60,12 +62,12 @@ function ContactForm({setMyContacts, setAlert}) {
 
     // depois de renderizar na tela adiciona ao local storage
     addContact(data.name, data.cpf, data.cep, data.street, data.number, data.neighborhood, data.city, data.estate, data.complement, formatDate, data.gender)
-    
+
     // mostra o alerta de sucesso
     setAlert(true)
     reset();
-  } 
-  
+  }
+
   const classes = useStyles();
 
   return (
@@ -73,12 +75,12 @@ function ContactForm({setMyContacts, setAlert}) {
             <Grid container rowSpacing={2} columnSpacing={1} color={'secondary.main'} p={2} justifyContent={'center'}>
                 <h2>Adicione um novo contato</h2>
                 <Grid xs={12} sm={12} item>
-                    <InputText 
-                    name={'name'} 
-                    control={control} 
-                    lable={'Nome completo'} 
-                    error={!!errors.name} 
-                    helperText={errors.name?.message} 
+                    <InputText
+                    name={'name'}
+                    control={control}
+                    lable={'Nome completo'}
+                    error={!!errors.name}
+                    helperText={errors.name?.message}
                     value={''}/>
                 </Grid>
                 <Grid item xs={6} sm={12}>
