@@ -35,12 +35,12 @@ export const ContactsProvider = ({children}) => {
              }
          });
 
-         console.log(today);
 
          if (nearContact) {
              const nearContactDate = new Date(`${nearContact.date.split("/")[1]}/${nearContact.date.split("/")[0]}/${nearContact.date.split("/")[2]}`);
              const nearContacThisYear = new Date(today.getFullYear(), nearContactDate.getMonth(), nearContactDate.getDate());
              const age = nearContacThisYear.getFullYear() - nearContactDate.getFullYear();
+             if (today - nearContacThisYear > 0) return null;
 
              return {
                  name: nearContact.name,
