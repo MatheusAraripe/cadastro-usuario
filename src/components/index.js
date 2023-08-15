@@ -13,6 +13,8 @@ import EditContactsModal from "./modalContacts/EditContactsModal";
 import CardInfo from "./cardInfo/CardInfo";
 import CardInfoDate from "./cardInfo/CardInfoDate";
 import SearchBar from "./searchBar/SearchBar";
+import SelectGender from "./selectGender/SelectGender";
+import SearchArea from "./searchArea/SearchArea";
 
 export {
     MainContainer,
@@ -30,4 +32,6 @@ export {
     CardInfoDate,
     InfoAlert,
     SearchBar,
+    SelectGender,
+    SearchArea,
 };

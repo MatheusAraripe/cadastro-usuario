@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react'
 import { ContactsContext } from '../../context/ContactsContext';
 import { Box, Grid, Hidden} from '@mui/material'
-import { ContactCard, MainContainer, ContactForm, ButtonFormResponsive, ContactFormResponsive, ScrollCards, SuccessAlert, ModalContacts, EditContactsModal, InfoAlert, SearchBar} from '../../components'
+import { ContactCard, MainContainer, ContactForm, ButtonFormResponsive, ContactFormResponsive, ScrollCards, SuccessAlert, ModalContacts, EditContactsModal, InfoAlert, SearchBar, SelectGender, SearchArea} from '../../components'
 
 function Contacts() {
 
@@ -51,7 +51,7 @@ function Contacts() {
         </Hidden>
         <MainContainer title={"Meus Contatos"}>
             <Box my={15} >
-              <SearchBar setMyContacts={setMyContacts}/>
+              <SearchArea setMyContacts={setMyContacts}/>
 
               <ScrollCards>
                 {myContacts.map((item, index) => {
