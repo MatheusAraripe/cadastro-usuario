@@ -39,7 +39,6 @@ function EditContactsModal({item, setEditModalOpen, setMyContacts, setInfoAlert}
   const checkCep = (e) => {
     const cep = e.target.value.replace(/\D/g, '');
     fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res => res.json()).then(data => {
-      console.log(data);
       setValue('street', data.logradouro);
       setValue('neighborhood', data.bairro);
       setValue('city', data.localidade);
@@ -53,7 +52,6 @@ function EditContactsModal({item, setEditModalOpen, setMyContacts, setInfoAlert}
   }
 
   const handleEdit = (data) => {
-    console.log("o nome", data.name);
     const formatDate = format(new Date(data.date), 'dd/MM/yyyy');
 
     // mudando o estado do meu arry de contatos para renderizar sem  precisar recarregar a página

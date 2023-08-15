@@ -125,10 +125,14 @@ export const ContactsProvider = ({children}) => {
         localStorage.setItem('contacts', JSON.stringify(contactArry));
     }
 
-    const searchContact = (name) => {
+    const searchContact = (info) => {
         const contactArry = getContactsFromLs();
-        const filterContactsByName = contactArry.filter(item => item.name.toLowerCase().includes(name.toLowerCase()));
-        return filterContactsByName;
+        const filterContactsByInfo = contactArry.filter(
+            item => item.name.toLowerCase().includes(info.toLowerCase()) || 
+            item.cpf.toLowerCase().includes(info.toLowerCase()) || 
+            item.city.toLowerCase().includes(info.toLowerCase())
+            );
+        return filterContactsByInfo;
     }
 
 
