@@ -126,6 +126,7 @@ export const ContactsProvider = ({children}) => {
     }
 
     const searchContact = (info) => {
+       // if(info === "") return getContactsFromLs();
         const contactArry = getContactsFromLs();
         const filterContactsByInfo = contactArry.filter(
             item => item.name.toLowerCase().includes(info.toLowerCase()) || 
@@ -135,8 +136,13 @@ export const ContactsProvider = ({children}) => {
         return filterContactsByInfo;
     }
 
+    const filterContactsGender = (gender, searchValue) => {
+        if(gender === 'all') return searchContact(searchValue)
+        return searchContact(searchValue).filter(item => item.gender === gender)
+    }
 
-    return <ContactsContext.Provider value={{addContact, getContactsFromLs, newContact, excludeContact, filterList, findContact, editContact, searchContact, nextBirthday}}>
+
+    return <ContactsContext.Provider value={{addContact, getContactsFromLs, newContact, excludeContact, filterList, findContact, editContact, searchContact, nextBirthday, filterContactsGender}}>
         {children}
     </ContactsContext.Provider>
 };

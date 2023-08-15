@@ -8,6 +8,7 @@ function Contacts() {
   const {getContactsFromLs} = useContext(ContactsContext);
 
   const [myContacts, setMyContacts] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   //hook para alerta
   const [alert, setAlert] = useState(false)
@@ -51,7 +52,8 @@ function Contacts() {
         </Hidden>
         <MainContainer title={"Meus Contatos"}>
             <Box my={15} >
-              <SearchArea setMyContacts={setMyContacts}/>
+
+              <SearchArea setMyContacts={setMyContacts} searchValue={searchValue} setSearchValue={setSearchValue}/>
 
               <ScrollCards>
                 {myContacts.map((item, index) => {
