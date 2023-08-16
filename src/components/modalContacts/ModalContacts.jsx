@@ -24,31 +24,31 @@ function ModalContacts({item, setContactModalOpen}) {
                 <h2>{item.name}</h2>
                 <Button onClick={closeModal} ><CancelPresentationTwoToneIcon color='error'/></Button>
             </Grid>
-            <Grid item md={4} xs={12}>
+            <Grid item md={4} xs={6}>
                 <p>CPF: {item.cpf}</p>
             </Grid>
-            <Grid item md={4} xs={12}>
+            <Grid item md={4} xs={6}>
                 <p>Nascimento: {item.date}</p>
             </Grid>
-            <Grid item md={4} xs={12}>
+            <Grid item md={4} xs={6}>
                 <p>Sexo: {item.gender}</p>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={6} md={4}>
                 <p>CEP: {item.cep}</p>
             </Grid>
             <Grid item xs={12} md={8} >
                 <p>Rua: {item.street}</p>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={4} md={4}>
                 <p>Número: {item.number}</p>
             </Grid>
-            <Grid item xs={12} md={8}>
+            <Grid item xs={8} md={8}>
                 <p>Complemento: {item.complement}</p>
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={9} md={6}>
                 <p>Cidade: {item.city}</p>
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={3} md={6}>
                 <p>Estado: {item.estate}</p>
             </Grid>
         </ModalContactsMain>
