@@ -1,18 +1,30 @@
 import { Tab } from '@mui/material'
 import { TabContext, TabList } from '@mui/lab'
-import React from 'react'
+import { useNavigate, useLocation} from 'react-router-dom';
+import React, { useState } from 'react'
 
 function ResponsiveNavbar() {
+
+
+  const location = useLocation();
+  const [value, setValue] = useState(location.pathname);
+  const navigate = useNavigate();
+
+  const handleChange = (event, newValue) => {
+    navigate(newValue)
+    setValue(newValue)
+  }
+
   return (
-    <TabContext value={'1'} >
-      <TabList centered textColor='secondary' indicatorColor='secondary'
+    <TabContext value={value}>
+      <TabList centered textColor='secondary'  indicatorColor='secondary' onChange={handleChange}
       sx={{
         backgroundColor: 'purple.main', 
         borderRadius: '10px', 
         boxShadow: '12',
         }}>
-        <Tab value={'1'} label='Home'/>
-        <Tab value={'5'} label='Meus Contatos'/>
+        <Tab value='/' label='Home' />
+        <Tab value='/contacts' label='Meus Contatos' />
       </TabList>
     </TabContext>
   )
