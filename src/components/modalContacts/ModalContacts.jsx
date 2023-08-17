@@ -1,7 +1,8 @@
 import React from 'react'
 import ModalMain from '../modalMain/ModalMain'
 import ModalContactsMain from './ModalContactsMain'
-import { Grid, Avatar, Button } from '@mui/material'
+import Map from '../map/Map'
+import { Grid, Avatar, Button, Box } from '@mui/material'
 import CancelPresentationTwoToneIcon from '@mui/icons-material/CancelPresentationTwoTone';
 
 function ModalContacts({item, setContactModalOpen}) {
@@ -51,6 +52,9 @@ function ModalContacts({item, setContactModalOpen}) {
             <Grid item xs={3} md={6}>
                 <p>Estado: {item.estate}</p>
             </Grid>
+            
+            <Map street={item.street} number={item.number}/>
+            
         </ModalContactsMain>
     </ModalMain>
   )

@@ -43,7 +43,6 @@ function ContactForm({setMyContacts, setAlert}) {
   const checkCep = (e) => {
     const cep = e.target.value.replace(/\D/g, '');
     fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res => res.json()).then(data => {
-      console.log(data);
       setValue('street', data.logradouro);
       setValue('neighborhood', data.bairro);
       setValue('city', data.localidade);

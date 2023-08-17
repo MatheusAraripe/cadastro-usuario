@@ -142,7 +142,19 @@ export const ContactsProvider = ({children}) => {
     }
 
 
-    return <ContactsContext.Provider value={{addContact, getContactsFromLs, newContact, excludeContact, filterList, findContact, editContact, searchContact, nextBirthday, filterContactsGender}}>
+    const geoLocation = (street, number) => {
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${street},${number}&key=AIzaSyB2foxE6x1rZWfXRDpmqpW99ti-H59p7BE`)
+        .then(response => response.json())
+        .then(data => {
+        return data.results[0].geometry.location;
+        })
+        .catch(error => {
+        return ('Erro ao obter dados de geolocalização:', error);
+        });
+    }
+
+
+    return <ContactsContext.Provider value={{addContact, getContactsFromLs, newContact, excludeContact, filterList, findContact, editContact, searchContact, nextBirthday, filterContactsGender, geoLocation}}>
         {children}
     </ContactsContext.Provider>
 };
