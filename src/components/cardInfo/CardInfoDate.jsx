@@ -10,7 +10,6 @@ function CardInfoDate() {
   const {nextBirthday} = useContext(ContactsContext);
 
   const contact = nextBirthday();
-  console.log(contact);
 
   if (contact === null) {
     return(
