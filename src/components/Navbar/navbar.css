@@ -1,9 +1,13 @@
 .navLink{
     text-decoration: none;
     color: rgba(105, 105, 105, 0.884);
-    padding: 1rem;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    border-radius:10px;
 }
 .navLink:hover{
-   color: #32e479;
+    box-shadow: rgba(46, 240, 104, 0.4) 1px 1px, rgba(46, 240, 149, 0.3) 3px 3px, rgba(46, 240, 166, 0.2) 5px 5px;
 }

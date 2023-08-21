@@ -10,7 +10,7 @@ function Home() {
   const contacts = getContactsFromLs().length;
 
   return (
-    <MainContainer title={"Home"}>
+    <MainContainer title={"Cadastre seus contatos"}>
       <Grid container rowSpacing={3} display={'flex'} justifyContent={'center'} alignItems={'center'}>
         <Hidden mdDown>
           <Grid item xs={12} md={8} lg={7} xl={6}>
