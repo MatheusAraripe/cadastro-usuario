@@ -22,7 +22,7 @@ function CardInfoDate() {
           <SentimentDissatisfiedTwoToneIcon sx={{color: 'orange.dark'}} fontSize='large'/>
         </Grid>
         <Grid item xs={12} display={'flex'} justifyContent={'center'} alignItems={'center'}>
-            <p>Nao encontramos nenhum aniversario proximo</p>
+            <p>Não encontramos nenhum aniversário próximo</p>
         </Grid>
       </Grid>
     )
