@@ -70,7 +70,7 @@ function EditContactsModal({item, setEditModalOpen, setMyContacts, setInfoAlert}
   return (
     <ModalMain>
       <form onSubmit={handleSubmit(handleEdit)}>
-        <ModalContactsMain>
+        <ModalContactsMain isForm={true}>
             <Grid item xs={12} display={'flex'} justifyContent={'right'} alignItems={'center'}>
               <Button onClick={closeModal}><CancelPresentationTwoToneIcon color='error'/></Button>
             </Grid>

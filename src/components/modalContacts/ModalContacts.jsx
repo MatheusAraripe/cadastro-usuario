@@ -13,7 +13,7 @@ function ModalContacts({item, setContactModalOpen}) {
 
   return (
     <ModalMain>
-        <ModalContactsMain>
+        <ModalContactsMain isForm={false}>
             <Grid item xs={2} md={2}>
                 {item.gender === 'Masculino'? 
                 <Avatar src='src\assets\maleAvatar.jpg' alt="Male Avatar" sx={{boxShadow: '6'}} />
