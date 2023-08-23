@@ -45,7 +45,7 @@ function Contacts() {
     {infoCpfAlert && <InfoAlert mesage={"CPF ja cadastrado"} type={"error"}/>}
 
     <Grid container justifyContent={'center'} alignItems={'center'}>
-    {isOpen && <ContactFormResponsive setIsOpen={setIsOpen}/>}
+    {isOpen && <ContactFormResponsive setIsOpen={setIsOpen} setMyContacts={setMyContacts} setAlert={setAlert} setInfoCpfAlert={setInfoCpfAlert}/>}
       <Grid item xl={9} lg={8} md={8} sm={12} xs={12} borderRight={2} borderColor={'grey.300'}>
         <Hidden mdUp>
             <Box sx={{position: 'absolute', right: 0, margin: '2.5rem'}}>
