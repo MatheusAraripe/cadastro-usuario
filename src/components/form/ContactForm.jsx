@@ -31,7 +31,7 @@ const validationSchema = yup.object().shape({
 });
 
 // eslint-disable-next-line react/prop-types
-function ContactForm({setMyContacts, setAlert}) {
+function ContactForm({setMyContacts, setAlert, setInfoCpfAlert}) {
 
   const { control, handleSubmit, setValue, setFocus, reset, formState: { errors } } = useForm({
       resolver: yupResolver(validationSchema)
@@ -53,10 +53,8 @@ function ContactForm({setMyContacts, setAlert}) {
 
 
   const dataSubmit = (data) => {
-    const formatDate = format(new Date(data.date), 'dd/MM/yyyy');
-
-
     if (checkCpf(data.cpf) === undefined) {
+      const formatDate = format(new Date(data.date), 'dd/MM/yyyy');
       const LsContacts = getContactsFromLs();
       // hook apenas para renderizar os contatos de maneira automática na tela
       setMyContacts([...LsContacts, newContact(data.name, data.cpf, data.cep,data.street, data.number, data.neighborhood, data.city, data.estate, data.complement,formatDate, data.gender)]);
@@ -68,7 +66,7 @@ function ContactForm({setMyContacts, setAlert}) {
       setAlert(true)
       reset();
     }else{
-      alert("Cpf existente")
+      setInfoCpfAlert(true)
     }
   }
 

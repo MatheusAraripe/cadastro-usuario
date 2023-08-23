@@ -14,6 +14,7 @@ function Contacts() {
   const [alert, setAlert] = useState(false)
   const [deletAlert, setDeleteAlert] = useState(false);
   const [infoAlert, setInfoAlert] = useState(false);
+  const [infoCpfAlert, setInfoCpfAlert] = useState(false);
 
   useEffect(() => {
     setMyContacts(getContactsFromLs())
@@ -34,13 +35,14 @@ function Contacts() {
   return (
     <>
     {editModalOpen && <EditContactsModal setEditModalOpen={setEditModalOpen} item={item} setMyContacts={setMyContacts} setInfoAlert={setInfoAlert}/>}
-    {contactModalOpen && 
+    {contactModalOpen &&
     <ModalContacts item={item} setContactModalOpen={setContactModalOpen}/>
     }
 
     {alert && <SuccessAlert message={"adicionado"}/>}
     {deletAlert && <SuccessAlert message={"deletado"}/>}
-    {infoAlert && <InfoAlert />}
+    {infoAlert && <InfoAlert mesage={"Você editou as informações de um contato"} type={"info"}/>}
+    {infoCpfAlert && <InfoAlert mesage={"CPF ja cadastrado"} type={"error"}/>}
 
     <Grid container justifyContent={'center'} alignItems={'center'}>
     {isOpen && <ContactFormResponsive setIsOpen={setIsOpen}/>}
@@ -75,7 +77,7 @@ function Contacts() {
       </Grid>
       <Hidden mdDown>
         <Grid item xl={3} lg={4} md={4} sx={{backgroundColor: 'secondary.light'}} height={'100vh'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
-          <ContactForm setMyContacts={setMyContacts} setAlert={setAlert}/>
+          <ContactForm setMyContacts={setMyContacts} setAlert={setAlert} setInfoCpfAlert={setInfoCpfAlert}/>
         </Grid>
       </Hidden>
     </Grid>

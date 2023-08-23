@@ -1,8 +1,9 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react'
 import { Alert } from '@mui/material'
 
-function InfoAlert() {
-  
+function InfoAlert({mesage, type}) {
+
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -15,7 +16,7 @@ function InfoAlert() {
   return (
     <>
       {isVisible && (
-        <Alert severity="info" sx={{
+        <Alert severity={type} sx={{
           width: {xs: '250px', sm: '300px', md: '500px'},
           position: 'absolute',
           zIndex: '99',
@@ -23,7 +24,7 @@ function InfoAlert() {
           top: '20px',
           border: '1px solid black'
           }}>
-          Você editou as informações de um contato
+          {mesage}
         </Alert>
       )}
     </>
