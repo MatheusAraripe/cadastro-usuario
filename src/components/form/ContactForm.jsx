@@ -37,7 +37,7 @@ function ContactForm({setMyContacts, setAlert}) {
       resolver: yupResolver(validationSchema)
     });
 
-  const {addContact, newContact, getContactsFromLs} = useContext(ContactsContext);
+  const {addContact, newContact, getContactsFromLs, checkCpf} = useContext(ContactsContext);
 
 
   const checkCep = (e) => {
@@ -55,16 +55,21 @@ function ContactForm({setMyContacts, setAlert}) {
   const dataSubmit = (data) => {
     const formatDate = format(new Date(data.date), 'dd/MM/yyyy');
 
-    const LsContacts = getContactsFromLs();
-    // hook apenas para renderizar os contatos de maneira automática na tela
-    setMyContacts([...LsContacts, newContact(data.name, data.cpf, data.cep,data.street, data.number, data.neighborhood, data.city, data.estate, data.complement,formatDate, data.gender)]);
 
-    // depois de renderizar na tela adiciona ao local storage
-    addContact(data.name, data.cpf, data.cep, data.street, data.number, data.neighborhood, data.city, data.estate, data.complement, formatDate, data.gender)
+    if (checkCpf(data.cpf) === undefined) {
+      const LsContacts = getContactsFromLs();
+      // hook apenas para renderizar os contatos de maneira automática na tela
+      setMyContacts([...LsContacts, newContact(data.name, data.cpf, data.cep,data.street, data.number, data.neighborhood, data.city, data.estate, data.complement,formatDate, data.gender)]);
 
-    // mostra o alerta de sucesso
-    setAlert(true)
-    reset();
+      // depois de renderizar na tela adiciona ao local storage
+      addContact(data.name, data.cpf, data.cep, data.street, data.number, data.neighborhood, data.city, data.estate, data.complement, formatDate, data.gender)
+
+      // mostra o alerta de sucesso
+      setAlert(true)
+      reset();
+    }else{
+      alert("Cpf existente")
+    }
   }
 
   const classes = useStyles();
