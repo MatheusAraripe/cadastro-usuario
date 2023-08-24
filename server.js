@@ -10,7 +10,7 @@ app.use('/', express.static(
     )
 ))
 
-app.use('/contatos', express.static(
+app.use('/contacts', express.static(
     resolve(
         __dirname,
         "./dist"
