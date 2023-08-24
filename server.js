@@ -4,14 +4,14 @@ const app = express();
 
 
 app.use('/', express.static(
-    resolve(
+    express.resolve(
         __dirname,
         "./dist"
     )
 ))
 
 app.use('/contacts', express.static(
-    resolve(
+    express.resolve(
         __dirname,
         "./dist"
     )
