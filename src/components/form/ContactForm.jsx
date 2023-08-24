@@ -64,9 +64,15 @@ function ContactForm({setMyContacts, setAlert, setInfoCpfAlert}) {
 
       // mostra o alerta de sucesso
       setAlert(true)
+      setTimeout(() => {
+        setAlert(false);
+      }, 4000);
       reset();
     }else{
       setInfoCpfAlert(true)
+      setTimeout(() => {
+        setInfoCpfAlert(false);
+      }, 4000);
     }
   }
 

@@ -65,6 +65,9 @@ function EditContactsModal({item, setEditModalOpen, setMyContacts, setInfoAlert}
     editContact(item.id, data.name, data.cpf, data.cep,data.street, data.number, data.neighborhood, data.city, data.estate, data.complement,formatDate, data.gender);
     setEditModalOpen(false);
     setInfoAlert(true);
+    setTimeout(() => {
+      setInfoAlert(false);
+    }, 4000);
   }
 
   return (

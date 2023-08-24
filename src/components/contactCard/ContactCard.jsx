@@ -26,7 +26,13 @@ function ContactCard({item, setMyContacts, setContactModalOpen, setEditModalOpen
   e.stopPropagation();
   // hook apenas para renderizar os contatos de maneira automática na tela
   setMyContacts(filterList(id));
+
+  //define o alerta como true depois do tempo acabar volta para false
   setDeleteAlert(true)
+  setTimeout(() => {
+    setDeleteAlert(false);
+  }, 4000);
+  
   // exclui contato
   excludeContact(id);
  }
