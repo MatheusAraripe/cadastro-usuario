@@ -32,7 +32,9 @@ function EditContactsModal({item, setEditModalOpen, setMyContacts, setInfoAlert}
     resolver: yupResolver(validationSchema)
   });
 
-  const {editContact, getContactsFromLs, newContact} = useContext(ContactsContext);
+  const {editContact, getContactsFromLs, newContact, extractCpfNumbers} = useContext(ContactsContext);
+
+  const formatCpf = extractCpfNumbers(item.cpf);
 
   const date = dayjs(item.date, 'DD/MM/YYYY');
 
@@ -81,7 +83,7 @@ function EditContactsModal({item, setEditModalOpen, setMyContacts, setInfoAlert}
               <InputText name={'name'} control={control} lable={'Nome completo'} error={!!errors.name} helperText={errors.name?.message} value={item.name}/>
             </Grid>
             <Grid item xs={6}>
-              <InputText name={'cpf'} control={control} lable={'CPF'} error={!!errors.cpf} helperText={errors.cpf?.message} value={item.cpf}/>
+              <InputText name={'cpf'} control={control} lable={'CPF'} error={!!errors.cpf} helperText={errors.cpf?.message} value={formatCpf}/>
             </Grid>
             <Grid item xs={6}>
               <InputDate name={'date'} control={control} value={date} label={'Data de Nascimento'} error={!!errors.date} helperText={errors.date?.message} />

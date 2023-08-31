@@ -52,13 +52,33 @@ export const ContactsProvider = ({children}) => {
          }
     };
 
+    const formatCPF = (cpf) => {
+        // Remover caracteres não numéricos do CPF
+        const numericCPF = cpf.replace(/\D/g, '');
+      
+        // Formatar o CPF com pontos e traço
+        const formattedCPF = numericCPF.replace(
+          /^(\d{3})(\d{3})(\d{3})(\d{2})$/,
+          '$1.$2.$3-$4'
+        );
+      
+        return formattedCPF;
+    };
+
+    const extractCpfNumbers = (cpf) => {
+        // Remover todos os caracteres não numéricos do CPF
+        const numericCPF = cpf.replace(/\D/g, '');
+      
+        return numericCPF;
+    };
+
    // formato do objeto contact
    const newContact = (name, cpf, cep, street, number, neighborhood, city, estate, complement, date, gender) => {
     return(
         {
             id: uuidv4(),
             name,
-            cpf,
+            cpf: formatCPF(cpf),
             cep,
             street,
             number,
@@ -111,7 +131,7 @@ export const ContactsProvider = ({children}) => {
         const newEditConatc = {
             id,
             name,
-            cpf,
+            cpf: formatCPF(cpf),
             cep,
             street,
             number,
@@ -146,7 +166,7 @@ export const ContactsProvider = ({children}) => {
     }
 
 
-    return <ContactsContext.Provider value={{addContact, getContactsFromLs, newContact, excludeContact, filterList, findContact, editContact, searchContact, nextBirthday, filterContactsGender, checkCpf}}>
+    return <ContactsContext.Provider value={{addContact, getContactsFromLs, newContact, excludeContact, filterList, findContact, editContact, searchContact, nextBirthday, filterContactsGender, checkCpf, extractCpfNumbers}}>
         {children}
     </ContactsContext.Provider>
 };
