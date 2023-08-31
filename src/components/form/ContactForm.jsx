@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { ContactsContext } from '../../context/ContactsContext';
 import { makeStyles } from '@mui/styles';
 import format from 'date-fns/format';
+import { cpf } from 'cpf-cnpj-validator';
 // eslint-disable-next-line no-unused-vars
 import React, {useContext} from 'react'
 
@@ -31,7 +32,7 @@ const validationSchema = yup.object().shape({
 });
 
 // eslint-disable-next-line react/prop-types
-function ContactForm({setMyContacts, setAlert, setInfoCpfAlert}) {
+function ContactForm({setMyContacts, setAlert, setInfoCpfAlert, setInfoCpfValidationAlert}) {
 
   const { control, handleSubmit, setValue, setFocus, reset, formState: { errors } } = useForm({
       resolver: yupResolver(validationSchema)
@@ -54,20 +55,27 @@ function ContactForm({setMyContacts, setAlert, setInfoCpfAlert}) {
 
   const dataSubmit = (data) => {
     if (checkCpf(data.cpf) === undefined) {
-      const formatDate = format(new Date(data.date), 'dd/MM/yyyy');
-      const LsContacts = getContactsFromLs();
-      // hook apenas para renderizar os contatos de maneira automática na tela
-      setMyContacts([...LsContacts, newContact(data.name, data.cpf, data.cep,data.street, data.number, data.neighborhood, data.city, data.estate, data.complement,formatDate, data.gender)]);
+      if (!cpf.isValid(data.cpf)){
+        setInfoCpfValidationAlert(true);
+        setTimeout(() => {
+          setInfoCpfValidationAlert(false);
+        }, 4000);
+      }else{
+        const formatDate = format(new Date(data.date), 'dd/MM/yyyy');
+        const LsContacts = getContactsFromLs();
+        // hook apenas para renderizar os contatos de maneira automática na tela
+        setMyContacts([...LsContacts, newContact(data.name, data.cpf, data.cep,data.street, data.number, data.neighborhood, data.city, data.estate, data.complement,formatDate, data.gender)]);
 
-      // depois de renderizar na tela adiciona ao local storage
-      addContact(data.name, data.cpf, data.cep, data.street, data.number, data.neighborhood, data.city, data.estate, data.complement, formatDate, data.gender)
+        // depois de renderizar na tela adiciona ao local storage
+        addContact(data.name, data.cpf, data.cep, data.street, data.number, data.neighborhood, data.city, data.estate, data.complement, formatDate, data.gender)
 
-      // mostra o alerta de sucesso
-      setAlert(true)
-      setTimeout(() => {
-        setAlert(false);
-      }, 4000);
-      reset();
+        // mostra o alerta de sucesso
+        setAlert(true)
+        setTimeout(() => {
+          setAlert(false);
+        }, 4000);
+        reset();
+      }
     }else{
       setInfoCpfAlert(true)
       setTimeout(() => {

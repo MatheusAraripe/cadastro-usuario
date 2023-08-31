@@ -15,6 +15,7 @@ function Contacts() {
   const [deletAlert, setDeleteAlert] = useState(false);
   const [infoAlert, setInfoAlert] = useState(false);
   const [infoCpfAlert, setInfoCpfAlert] = useState(false);
+  const [infoCpfValidationAlert, setInfoCpfValidationAlert] = useState(false);
 
   useEffect(() => {
     setMyContacts(getContactsFromLs())
@@ -43,6 +44,7 @@ function Contacts() {
     {deletAlert && <SuccessAlert message={"deletado"}/>}
     {infoAlert && <InfoAlert mesage={"Você editou as informações de um contato"} type={"info"}/>}
     {infoCpfAlert && <InfoAlert mesage={"CPF ja cadastrado"} type={"error"}/>}
+    {infoCpfValidationAlert && <InfoAlert mesage={"CPF inválido!"} type={"error"}/>}
 
     <Grid container justifyContent={'center'} alignItems={'center'}>
     {isOpen && <ContactFormResponsive setIsOpen={setIsOpen} setMyContacts={setMyContacts} setAlert={setAlert} setInfoCpfAlert={setInfoCpfAlert}/>}
@@ -77,7 +79,7 @@ function Contacts() {
       </Grid>
       <Hidden mdDown>
         <Grid item xl={3} lg={4} md={4} sx={{backgroundColor: 'secondary.light'}} height={'100vh'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
-          <ContactForm setMyContacts={setMyContacts} setAlert={setAlert} setInfoCpfAlert={setInfoCpfAlert}/>
+          <ContactForm setMyContacts={setMyContacts} setAlert={setAlert} setInfoCpfAlert={setInfoCpfAlert} setInfoCpfValidationAlert={setInfoCpfValidationAlert}/>
         </Grid>
       </Hidden>
     </Grid>
