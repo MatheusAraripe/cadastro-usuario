@@ -10,6 +10,7 @@ import dayjs from 'dayjs';
 import format from 'date-fns/format';
 import * as yup from 'yup';
 import {InputText, InputRatio, InputDate} from '../form/index'
+import { validate } from 'gerador-validador-cpf'
 
 
 const validationSchema = yup.object().shape({
@@ -26,13 +27,13 @@ const validationSchema = yup.object().shape({
 });
 
 
-function EditContactsModal({item, setEditModalOpen, setMyContacts, setInfoAlert}) {
+function EditContactsModal({item, setEditModalOpen, setMyContacts, setInfoAlert, setInfoCpfAlert, setInfoCpfValidationAlert}) {
 
-  const { control, handleSubmit, setValue, setFocus, formState: { errors } } = useForm({
+  const { control, handleSubmit, setValue, setFocus, reset, formState: { errors } } = useForm({
     resolver: yupResolver(validationSchema)
   });
 
-  const {editContact, getContactsFromLs, newContact, extractCpfNumbers} = useContext(ContactsContext);
+  const {editContact, getContactsFromLs, newContact, extractCpfNumbers, checkCpf} = useContext(ContactsContext);
 
   const formatCpf = extractCpfNumbers(item.cpf);
 
@@ -54,22 +55,37 @@ function EditContactsModal({item, setEditModalOpen, setMyContacts, setInfoAlert}
   }
 
   const handleEdit = (data) => {
-    const formatDate = format(new Date(data.date), 'dd/MM/yyyy');
+    if (checkCpf(data.cpf, item.id) === undefined){;
+      if (validate(data.cpf) === false){
+        setInfoCpfValidationAlert(true);
+        setTimeout(() => {
+          setInfoCpfValidationAlert(false);
+        }, 4000);
+      }else{
+        const formatDate = format(new Date(data.date), 'dd/MM/yyyy');
 
-    // mudando o estado do meu arry de contatos para renderizar sem  precisar recarregar a página
-    const contactArry = getContactsFromLs();
-    const contact = contactArry.find(user => user.id === item.id);
-    const index = contactArry.indexOf(contact);
-    contactArry[index] = newContact(data.name, data.cpf, data.cep, data.street, data.number, data.neighborhood, data.city, data.estate, data.complement, formatDate, data.gender)
-    setMyContacts(contactArry);
-
-    // salvando no LocalStorage
-    editContact(item.id, data.name, data.cpf, data.cep,data.street, data.number, data.neighborhood, data.city, data.estate, data.complement,formatDate, data.gender);
-    setEditModalOpen(false);
-    setInfoAlert(true);
-    setTimeout(() => {
-      setInfoAlert(false);
-    }, 4000);
+        // mudando o estado do meu arry de contatos para renderizar sem  precisar recarregar a página
+        const contactArry = getContactsFromLs();
+        const contact = contactArry.find(user => user.id === item.id);
+        const index = contactArry.indexOf(contact);
+        contactArry[index] = newContact(data.name, data.cpf, data.cep, data.street, data.number, data.neighborhood, data.city, data.estate, data.complement, formatDate, data.gender)
+        setMyContacts(contactArry);
+    
+        // salvando no LocalStorage
+        editContact(item.id, data.name, data.cpf, data.cep,data.street, data.number, data.neighborhood, data.city, data.estate, data.complement,formatDate, data.gender);
+        setEditModalOpen(false);
+        setInfoAlert(true);
+        setTimeout(() => {
+          setInfoAlert(false);
+        }, 4000);
+        reset();
+      }
+    }else{
+      setInfoCpfAlert(true)
+      setTimeout(() => {
+        setInfoCpfAlert(false);
+      }, 4000);
+    }
   }
 
   return (
@@ -116,7 +132,7 @@ function EditContactsModal({item, setEditModalOpen, setMyContacts, setInfoAlert}
                 <InputText name={'estate'} control={control} lable={'Estado'} error={!!errors.estate} helperText={errors.estate?.message} value={item.estate}/>
             </Grid>
             <Grid item xs={12}>
-              <Button type="submit" variant="text" fullWidth onClick={handleEdit}>Confirmar</Button>
+              <Button type="submit" variant="text" fullWidth>Confirmar</Button>
             </Grid>
           </ModalContactsMain>
       </form>

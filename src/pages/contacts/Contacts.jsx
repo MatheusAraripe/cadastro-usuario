@@ -35,7 +35,15 @@ function Contacts() {
 
   return (
     <>
-    {editModalOpen && <EditContactsModal setEditModalOpen={setEditModalOpen} item={item} setMyContacts={setMyContacts} setInfoAlert={setInfoAlert}/>}
+    {editModalOpen && <EditContactsModal 
+    setEditModalOpen={setEditModalOpen} 
+    item={item} 
+    setMyContacts={setMyContacts} 
+    setInfoAlert={setInfoAlert} 
+    setInfoCpfAlert={setInfoCpfAlert} 
+    setInfoCpfValidationAlert={setInfoCpfValidationAlert}/>}
+
+    
     {contactModalOpen &&
     <ModalContacts item={item} setContactModalOpen={setContactModalOpen}/>
     }

@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { ContactsContext } from '../../context/ContactsContext';
 import { makeStyles } from '@mui/styles';
 import format from 'date-fns/format';
-import { cpf } from 'cpf-cnpj-validator';
+import { validate } from 'gerador-validador-cpf'
 // eslint-disable-next-line no-unused-vars
 import React, {useContext} from 'react'
 
@@ -55,7 +55,7 @@ function ContactForm({setMyContacts, setAlert, setInfoCpfAlert, setInfoCpfValida
 
   const dataSubmit = (data) => {
     if (checkCpf(data.cpf) === undefined) {
-      if (!cpf.isValid(data.cpf)){
+      if (validate(data.cpf) === false){
         setInfoCpfValidationAlert(true);
         setTimeout(() => {
           setInfoCpfValidationAlert(false);
