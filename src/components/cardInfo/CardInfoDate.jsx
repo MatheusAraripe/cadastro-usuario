@@ -37,7 +37,7 @@ function CardInfoDate() {
             <CakeTwoToneIcon sx={{color: 'orange.dark'}} fontSize='large'/>
           </Grid>
           <Grid item xs={12} display={'flex'} justifyContent={'center'} alignItems={'center'}>
-              <p>{contact.name} faz <strong>{contact.age}</strong> anos no dia <strong>{contact.date}</strong></p>
+              <p><strong>{contact.name}</strong> faz <strong>{contact.age}</strong> anos no dia <strong>{contact.date}</strong></p>
           </Grid>
     </Grid>
   )

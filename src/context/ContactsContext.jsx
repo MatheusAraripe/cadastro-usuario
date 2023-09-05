@@ -159,14 +159,17 @@ export const ContactsProvider = ({children}) => {
         localStorage.setItem('contacts', JSON.stringify(contactArry));
     }
 
+    // const searchContact = (info) => {
+    //     const contactArry = getContactsFromLs();
+    //     const filterContactsByInfo = contactArry.filter(
+    //         item => item.name.toLowerCase().includes(info.toLowerCase()));
+    //     return filterContactsByInfo;
+    // }
+
     const searchContact = (info) => {
-       // if(info === "") return getContactsFromLs();
         const contactArry = getContactsFromLs();
         const filterContactsByInfo = contactArry.filter(
-            item => item.name.toLowerCase().includes(info.toLowerCase()) ||
-            item.cpf.toLowerCase().includes(info.toLowerCase()) ||
-            item.city.toLowerCase().includes(info.toLowerCase())
-            );
+            item => item.name.toLowerCase().includes(info.toLowerCase()));
         return filterContactsByInfo;
     }
 

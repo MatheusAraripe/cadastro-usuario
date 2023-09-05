@@ -19,7 +19,7 @@ const validationSchema = yup.object().shape({
   date: yup.date().required('Data obrigatória'),
   cep: yup.string().required('CEP é obrigatório'),
   street: yup.string().required('Rua é obrigatório'),
-  number: yup.number().required('Número é obrigatório'),
+  // number: yup.number().required('Número é obrigatório'),
   neighborhood: yup.string().required('Bairro é obrigatório'),
   city: yup.string().required('CIadde é obrigatória'),
   estate: yup.string().required('Estado é obrigatório'),

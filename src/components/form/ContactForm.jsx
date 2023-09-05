@@ -23,7 +23,7 @@ const validationSchema = yup.object().shape({
     cpf: yup.string().required('O CPF é obrigatório').min(11, 'CPF incompleto').max(11,'Formato inválido'),
     cep: yup.string().required('CEP é obrigatório'),
     street: yup.string().required('Rua é obrigatório'),
-    number: yup.number().required('Número é obrigatório'),
+    // number: yup.number().required('Número é obrigatório'),
     neighborhood: yup.string().required('Bairro é obrigatório'),
     city: yup.string().required('CIadde é obrigatória'),
     estate: yup.string().required('Estado é obrigatório'),
