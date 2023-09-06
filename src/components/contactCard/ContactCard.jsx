@@ -1,9 +1,9 @@
-import { Avatar, Button, Grid, Hidden} from '@mui/material'
-import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
-import { ContactsContext } from '../../context/ContactsContext';
+import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
+import { Avatar, Button, Grid, Hidden } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import React,{useContext} from 'react'
+import React from 'react';
+import useContactContext from '../../context/useContactContext';
 
 
 const useStyles = makeStyles({
@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 
 function ContactCard({item, setMyContacts, setContactModalOpen, setEditModalOpen, setItem, setDeleteAlert}) {
 
- const {excludeContact, filterList} = useContext(ContactsContext);
+ const {excludeContact, filterList} = useContactContext();
 
  const classes = useStyles();
 
