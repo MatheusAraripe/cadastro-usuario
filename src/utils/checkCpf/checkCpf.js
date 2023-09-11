@@ -10,7 +10,6 @@ const checkCpf = (cpf, id = false) => {
     const contactCpf = getContactsFromLs().find(
         (item) => extractCpfNumbers(item.cpf) === cpf
     );
-    console.log(contactCpf);
     if (contactCpf === undefined) {
         return undefined;
     } else {

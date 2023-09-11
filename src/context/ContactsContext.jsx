@@ -74,7 +74,7 @@ export const ContactsProvider = ({ children }) => {
 
     // exclue contato
     const excludeContact = (id) => {
-        const updatedList = filterList(id);
+        const updatedList = contacts.filter((item) => item.id !== id);
 
         setContacts(updatedList);
         localStorage.setItem("contacts", JSON.stringify(updatedList));
@@ -94,7 +94,7 @@ export const ContactsProvider = ({ children }) => {
         date,
         gender
     ) => {
-        const contactArry = getContactsFromLs();
+        const contactArry = contacts;
         const contact = contactArry.find((user) => user.id === id);
         const index = contactArry.indexOf(contact);
 
