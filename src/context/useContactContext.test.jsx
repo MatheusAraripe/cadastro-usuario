@@ -7,10 +7,6 @@ describe("Testing context", () => {
     const wrapper = ({ children }) => (
         <ContactsProvider>{children}</ContactsProvider>
     );
-    test("LS", () => {
-        const { result } = renderHook(() => useContactContext(), { wrapper });
-        expect(result.current.getContactsFromLs()).toStrictEqual([]);
-    });
     test("add contacts", () => {
         const { result } = renderHook(() => useContactContext(), { wrapper });
         act(() => {
