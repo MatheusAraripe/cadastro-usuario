@@ -119,4 +119,61 @@ describe("Testing context", () => {
             expect(result.current.searchContact("bob")).toStrictEqual([]);
         });
     });
+    describe("filterContactsGender", () => {
+        test("test if the filter returns only the male elements", () => {
+            const { result } = renderHook(() => useContactContext(), {
+                wrapper,
+            });
+            act(() => {
+                result.current.setContacts([
+                    { name: "matheus", gender: "male" },
+                    { name: "fabiana", gender: "female" },
+                    { name: "bob", gender: "male" },
+                ]);
+            });
+            expect(
+                result.current.filterContactsGender("male", "")
+            ).toStrictEqual([
+                { name: "matheus", gender: "male" },
+                { name: "bob", gender: "male" },
+            ]);
+        });
+        test("should return all the objects if the gender is 'all'", () => {
+            const { result } = renderHook(() => useContactContext(), {
+                wrapper,
+            });
+            act(() => {
+                result.current.setContacts([
+                    { name: "matheus", gender: "male" },
+                    { name: "fabiana", gender: "female" },
+                    { name: "bob", gender: "male" },
+                ]);
+            });
+            expect(
+                result.current.filterContactsGender("all", "")
+            ).toStrictEqual([
+                { name: "matheus", gender: "male" },
+                { name: "fabiana", gender: "female" },
+                { name: "bob", gender: "male" },
+            ]);
+        });
+        test("should return only the objects with 'ma' and male", () => {
+            const { result } = renderHook(() => useContactContext(), {
+                wrapper,
+            });
+            act(() => {
+                result.current.setContacts([
+                    { name: "matheus", gender: "male" },
+                    { name: "mario", gender: "male" },
+                    { name: "fabiana", gender: "female" },
+                ]);
+            });
+            expect(
+                result.current.filterContactsGender("male", "ma")
+            ).toStrictEqual([
+                { name: "matheus", gender: "male" },
+                { name: "mario", gender: "male" },
+            ]);
+        });
+    });
 });
