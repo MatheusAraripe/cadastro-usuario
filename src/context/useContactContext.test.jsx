@@ -97,16 +97,26 @@ describe("Testing context", () => {
         expect(result.current.contacts[0].name).toStrictEqual("edit name");
     });
 
-    test("searchContact", () => {
-        const { result } = renderHook(() => useContactContext(), { wrapper });
-        act(() => {
-            result.current.setContacts([
+    describe("searchContact", () => {
+        test("test if it can find the name 'matheus' searching for 'mat'", () => {
+            const { result } = renderHook(() => useContactContext(), {
+                wrapper,
+            });
+            act(() => {
+                result.current.setContacts([
+                    { name: "matheus" },
+                    { name: "fabiana" },
+                ]);
+            });
+            expect(result.current.searchContact("mat")).toStrictEqual([
                 { name: "matheus" },
-                { name: "fabiana" },
             ]);
         });
-        expect(result.current.searchContact("mat")).toStrictEqual([
-            { name: "matheus" },
-        ]);
+        test("the return should be an empty array when search for 'bob'", () => {
+            const { result } = renderHook(() => useContactContext(), {
+                wrapper,
+            });
+            expect(result.current.searchContact("bob")).toStrictEqual([]);
+        });
     });
 });
