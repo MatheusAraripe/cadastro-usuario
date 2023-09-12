@@ -120,7 +120,8 @@ export const ContactsProvider = ({ children }) => {
     };
 
     const searchContact = (info) => {
-        const contactArry = getContactsFromLs();
+        const contactArry = contacts;
+        //console.log(contactArry);
         const filterContactsByInfo = contactArry.filter((item) =>
             item.name.toLowerCase().includes(info.toLowerCase())
         );
@@ -139,6 +140,7 @@ export const ContactsProvider = ({ children }) => {
             value={{
                 addContact,
                 contacts,
+                setContacts,
                 newContact,
                 excludeContact,
                 editContact,

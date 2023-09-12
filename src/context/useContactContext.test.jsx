@@ -64,21 +64,21 @@ describe("Testing context", () => {
 
     test("editContact", () => {
         const { result } = renderHook(() => useContactContext(), { wrapper });
+        result.current.contacts[0] = {
+            id: "1",
+            name: "name",
+            cpf: "cpf",
+            cep: "cep",
+            street: "street",
+            number: "number",
+            neighborhood: "neighborhood",
+            city: "city",
+            estate: "estate",
+            complement: "comp",
+            date: "date",
+            gender: "gender",
+        };
         act(() => {
-            result.current.contacts[0] = {
-                id: "1",
-                name: "name",
-                cpf: "cpf",
-                cep: "cep",
-                street: "street",
-                number: "number",
-                neighborhood: "neighborhood",
-                city: "city",
-                estate: "estate",
-                complement: "comp",
-                date: "date",
-                gender: "gender",
-            };
             result.current.editContact(
                 "1",
                 "edit name",
@@ -95,5 +95,18 @@ describe("Testing context", () => {
             );
         });
         expect(result.current.contacts[0].name).toStrictEqual("edit name");
+    });
+
+    test("searchContact", () => {
+        const { result } = renderHook(() => useContactContext(), { wrapper });
+        act(() => {
+            result.current.setContacts([
+                { name: "matheus" },
+                { name: "fabiana" },
+            ]);
+        });
+        expect(result.current.searchContact("mat")).toStrictEqual([
+            { name: "matheus" },
+        ]);
     });
 });
