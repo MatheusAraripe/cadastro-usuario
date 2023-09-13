@@ -1,18 +1,13 @@
+import checkExistingCpf from "../checkExistingCpf/checkExistingCpf";
 import extractCpfNumbers from "../extractCpfNumbers/extractCpfNumbers";
 
 const checkCpf = (cpf, id = false, contacts) => {
-    if (id === false)
-        return contacts.find((item) => extractCpfNumbers(item.cpf) === cpf);
-
     const contactCpf = contacts.find(
         (item) => extractCpfNumbers(item.cpf) === cpf
     );
-    if (contactCpf === undefined) {
-        return undefined;
-    } else {
-        if (contactCpf.id === id) return undefined;
-        return contactCpf;
-    }
+
+    if (id === false) return contactCpf;
+    return checkExistingCpf(contactCpf, id);
 };
 
 export default checkCpf;
