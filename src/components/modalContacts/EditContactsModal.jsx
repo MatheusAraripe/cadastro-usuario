@@ -48,7 +48,7 @@ function EditContactsModal({
         resolver: yupResolver(validationSchema),
     });
 
-    const { editContact, newContact } = useContext(ContactsContext);
+    const { editContact, newContact, contacts } = useContext(ContactsContext);
 
     const formatCpf = extractCpfNumbers(item.cpf);
 
@@ -72,7 +72,7 @@ function EditContactsModal({
     };
 
     const handleEdit = (data) => {
-        if (checkCpf(data.cpf, item.id) === undefined) {
+        if (checkCpf(data.cpf, item.id, contacts) === undefined) {
             if (validate(data.cpf) === false) {
                 setInfoCpfValidationAlert(true);
                 setTimeout(() => {

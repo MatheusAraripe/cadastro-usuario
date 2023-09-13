@@ -53,7 +53,7 @@ function ContactForm({
         resolver: yupResolver(validationSchema),
     });
 
-    const { addContact, newContact } = useContext(ContactsContext);
+    const { addContact, newContact, contacts } = useContext(ContactsContext);
 
     const checkCep = (e) => {
         const cep = e.target.value.replace(/\D/g, "");
@@ -69,7 +69,7 @@ function ContactForm({
     };
 
     const dataSubmit = (data) => {
-        if (checkCpf(data.cpf) === undefined) {
+        if (checkCpf(data.cpf, false, contacts) === undefined) {
             if (validate(data.cpf) === false) {
                 setInfoCpfValidationAlert(true);
                 setTimeout(() => {

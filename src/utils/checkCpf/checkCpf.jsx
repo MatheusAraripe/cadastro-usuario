@@ -1,13 +1,10 @@
 import extractCpfNumbers from "../extractCpfNumbers/extractCpfNumbers";
-import getContactsFromLs from "../getContactsFromLs/getContactsFromLs";
 
-const checkCpf = (cpf, id = false) => {
+const checkCpf = (cpf, id = false, contacts) => {
     if (id === false)
-        return getContactsFromLs().find(
-            (item) => extractCpfNumbers(item.cpf) === cpf
-        );
+        return contacts.find((item) => extractCpfNumbers(item.cpf) === cpf);
 
-    const contactCpf = getContactsFromLs().find(
+    const contactCpf = contacts.find(
         (item) => extractCpfNumbers(item.cpf) === cpf
     );
     if (contactCpf === undefined) {
@@ -17,6 +14,5 @@ const checkCpf = (cpf, id = false) => {
         return contactCpf;
     }
 };
-
 
 export default checkCpf;

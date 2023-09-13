@@ -3,18 +3,11 @@ import { ContactsProvider } from "./ContactsContext";
 import { act, renderHook } from "@testing-library/react-hooks";
 import { useContactContext } from "./useContactContext";
 
-// const LS_KEY = "contactsTest";
-
 describe("Testing context", () => {
     const wrapper = ({ children }) => (
         <ContactsProvider>{children}</ContactsProvider>
     );
 
-    // const setItemSpy = vi.spyOn(Storage.prototype, "setItem");
-    // afterEach(() => {
-    //     localStorage.clear();
-    //     setItemSpy.mockClear();
-    // });
     test("newContact", () => {
         const { result } = renderHook(() => useContactContext(), { wrapper });
         expect(
