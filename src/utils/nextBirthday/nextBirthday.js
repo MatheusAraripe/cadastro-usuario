@@ -1,7 +1,7 @@
 import getContactsFromLs from "../getContactsFromLs/getContactsFromLs";
-import birthDateCurrentYear from "./birthDateCurrentYear";
-import findNearContact from "./findNearContact";
-import formatContactDate from "./formatContactDate";
+import birthDateCurrentYear from "./birthDateCurrentYear/birthDateCurrentYear";
+import findNearContact from "./findNearContact/findNearContact";
+import formatContactDate from "./formatContactDate/formatContactDate";
 
 
 const nextBirthday = () => {

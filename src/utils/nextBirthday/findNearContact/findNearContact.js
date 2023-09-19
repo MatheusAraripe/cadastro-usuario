@@ -1,6 +1,7 @@
-import birthDateCurrentYear from "./birthDateCurrentYear";
-import calculateNearContact from "./calculateNearContact";
-import formatContactDate from "./formatContactDate";
+
+import birthDateCurrentYear from "../birthDateCurrentYear/birthDateCurrentYear";
+import calculateNearContact from "../calculateNearContact/calculateNearContact";
+import formatContactDate from "../formatContactDate/formatContactDate";
 
 const findNearContact = (contacts, currentDate) => {
     let nearContact = null;

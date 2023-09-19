@@ -7,7 +7,7 @@ describe("calculateNearContact",()=>{
         const today = new Date()
 
         const calculated = calculateNearContact(new Date("10/25/2023"), Infinity, null, {date: '10/25/2000'}, today)
-        const nearDay = Math.abs(new Date("10/25/2023") - new Date());
+        const nearDay = Math.abs(new Date("10/25/2023") - today);
         expect(calculated).toStrictEqual({nearDay, nearContact: {date: '10/25/2000'}})
     })
 })
