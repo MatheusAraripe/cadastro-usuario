@@ -1,45 +1,29 @@
 import getContactsFromLs from "../getContactsFromLs/getContactsFromLs";
+import birthDateCurrentYear from "./birthDateCurrentYear";
+import findNearContact from "./findNearContact";
+import formatContactDate from "./formatContactDate";
+
 
 const nextBirthday = () => {
     const contacts = getContactsFromLs();
     const today = new Date();
-    let nearContact = null;
-    let nearDay = Infinity;
 
-    contacts.forEach((contact) => {
-        const dateArry = contact.date.split("/");
-        const contactDate = new Date(
-            `${dateArry[1]}/${dateArry[0]}/${dateArry[2]}`
-        );
-        const contactBirthDate = new Date(
-            today.getFullYear(),
-            contactDate.getMonth(),
-            contactDate.getDate()
-        );
+    const nearObject = findNearContact({contacts: contacts, currentDate: today, nearDay: nearDay, nearContact: nearContact});
 
-        const difference = Math.abs(contactBirthDate - today);
-
-        if (difference < nearDay) {
-            nearDay = difference;
-            nearContact = contact;
-        }
-    });
+    const nearDay = nearObject.nearDay
+    const nearContact = nearObject.nearDay
 
     if (nearContact) {
-        const nearContactDate = new Date(
-            `${nearContact.date.split("/")[1]}/${
-                nearContact.date.split("/")[0]
-            }/${nearContact.date.split("/")[2]}`
-        );
-        const nearContacThisYear = new Date(
-            today.getFullYear(),
-            nearContactDate.getMonth(),
-            nearContactDate.getDate()
-        );
+        const nearContactDate = formatContactDate(nearContact.date);
+
+        const nearContacThisYear = birthDateCurrentYear(today, nearContactDate);
+
+        if (today - nearContacThisYear > 0) return null;
+
         const age =
             nearContacThisYear.getFullYear() -
             nearContactDate.getFullYear();
-        if (today - nearContacThisYear > 0) return null;
+        
 
         return {
             name: nearContact.name,
@@ -48,9 +32,8 @@ const nextBirthday = () => {
             }`,
             age: age,
         };
-    } else {
-        return null; // Retorna null se não houver pessoas no array
     }
+    return null;
 };
 
 

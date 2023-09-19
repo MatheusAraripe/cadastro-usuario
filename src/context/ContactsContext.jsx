@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { filterList, formatCPF, getContactsFromLs } from "../utils";
+import { formatCPF, getContactsFromLs } from "../utils";
 
 export const ContactsContext = createContext(null);
 
