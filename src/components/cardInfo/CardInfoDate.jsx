@@ -3,10 +3,10 @@ import CakeTwoToneIcon from "@mui/icons-material/CakeTwoTone";
 import SentimentDissatisfiedTwoToneIcon from "@mui/icons-material/SentimentDissatisfiedTwoTone";
 // eslint-disable-next-line no-unused-vars
 import React from "react";
-import { nextBirthday } from "../../utils";
+import { getContactsFromLs, nextBirthday } from "../../utils";
 
 function CardInfoDate() {
-    const contact = nextBirthday();
+    const contact = nextBirthday(getContactsFromLs());
 
     if (contact === null) {
         return (
