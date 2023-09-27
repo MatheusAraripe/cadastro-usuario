@@ -6,9 +6,7 @@ import formatContactDate from "../formatContactDate/formatContactDate";
 const findNearContact = (contacts, currentDate) => {
     let nearContact = null;
     let nearDay = Infinity;
-
     contacts.forEach((contact) => {
-
         const contactDate = formatContactDate(contact.date);
 
         const contactBirthDate = birthDateCurrentYear(currentDate, contactDate)

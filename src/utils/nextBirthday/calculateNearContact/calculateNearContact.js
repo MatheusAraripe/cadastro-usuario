@@ -5,7 +5,6 @@ const calculateNearContact = (contactBirthDate, nearDay, nearContact, contact, t
         nearDay = difference;
         nearContact = contact;
     }
-    console.log(nearContact);
     return {nearDay, nearContact}
 };
 export default calculateNearContact;
