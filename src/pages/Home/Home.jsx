@@ -1,10 +1,11 @@
 import { MainContainer, CardInfo, CardInfoDate } from "../../components";
 import { Grid, Hidden } from "@mui/material";
 import "./home.css";
-import { getContactsFromLs } from "../../utils";
+import { getContactsFromLs, nextBirthday } from "../../utils";
 
 function Home() {
     const contacts = getContactsFromLs().length;
+    const contact = nextBirthday(getContactsFromLs());
 
     return (
         <MainContainer title={"Cadastre seus contatos"}>
@@ -36,7 +37,7 @@ function Home() {
                     marginBottom={6}
                 >
                     <CardInfo info={contacts} />
-                    <CardInfoDate />
+                    <CardInfoDate contact={contact} />
                 </Grid>
             </Grid>
         </MainContainer>
